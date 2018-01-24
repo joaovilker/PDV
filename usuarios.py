@@ -36,7 +36,7 @@ class MainUsuarios(Ui_FrameUsuarios):
         self.tx_cod_usuario = QtGui.QLineEdit()
         self.tx_cod_usuario.setHidden(True)
 
-        # Ajustes, Campos e Acções Formulario
+        # Ajustes, Campos e Ações Formulario
         # Combobox Status
         self.tx_status.addItems(self.combobox_status.lst_status)
         self.tx_status.setCurrentIndex(0)
@@ -47,6 +47,11 @@ class MainUsuarios(Ui_FrameUsuarios):
         self.tx_estado_usuario.setCurrentIndex(18)
         # Combobox Nível
         self.tx_nivel_acesso.addItems(self.combobox_status.lst_nivel)
+        # Desabilitando botão cadastro
+        self.bt_cadastrar_usuario.setEnabled(False)
+        # Funcao Habilitar botão incluir
+        self.tx_login.textChanged.connect(self.habilitar)
+        self.tx_nome_usuario.textChanged.connect(self.habilitar)
 
         # Botao cadastrar
         self.bt_cadastrar_usuario.clicked.connect(self.confirmar_usuario)
@@ -142,6 +147,14 @@ class MainUsuarios(Ui_FrameUsuarios):
             i += 1
         self.tx_buscar_usuarios.clear()
 
+    # Habilitar Botao Cadastro
+    def habilitar(self, event):
+        if len(self.tx_login.text()) > 1 and len(self.tx_nome_usuario.text()) > 1:
+            self.bt_cadastrar_usuario.setEnabled(True)
+        else:
+            self.bt_cadastrar_usuario.setEnabled(False)
+
+    # Cadastro de usuário
     def cadastrar_usuario(self):
         cadastro = CrudUsuarios()
         cadastro.id_usuario = unicode(self.tx_cod_usuario.text()).encode("utf8")
