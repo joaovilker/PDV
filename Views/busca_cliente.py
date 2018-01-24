@@ -1,4 +1,4 @@
-''# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'busca_cliente.ui'
 #
@@ -82,18 +82,20 @@ class Ui_DialogBuscarCliente(object):
 "color: #000"))
         self.tableWidget.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(2)
+        self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
         self.tableWidget.verticalHeader().setVisible(False)
 
-        self.tradBuscarCliente(DialogBuscarCliente)
+        self.tradBuscaCliente(DialogBuscarCliente)
         QtCore.QMetaObject.connectSlotsByName(DialogBuscarCliente)
 
-    def tradBuscarCliente(self, DialogBuscarCliente):
+    def tradBuscaCliente(self, DialogBuscarCliente):
         DialogBuscarCliente.setWindowTitle(_translate("DialogBuscarCliente", "Buscar Cliente", None))
         self.lb_titulo_modal.setText(_translate("DialogBuscarCliente", "Alterar Senha", None))
         self.lb_info.setText(_translate("DialogBuscarCliente", "Nome", None))
@@ -101,4 +103,6 @@ class Ui_DialogBuscarCliente(object):
         item.setText(_translate("DialogBuscarCliente", "Cod.", None))
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("DialogBuscarCliente", "Nome:", None))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("DialogBuscarCliente", "Telefone", None))
 

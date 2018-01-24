@@ -73,15 +73,16 @@ class CrudCliente(object):
         c = conecta.conecta.cursor()
 
         try:
-            c.execute("""SELECT id_cliente, nome, sobrenome FROM clientes WHERE nome LIKE "%{}%" """.format(busca))
+            c.execute("""SELECT id_cliente, nome, telefone FROM clientes WHERE nome LIKE "%{}%" """.format(busca))
 
             self.cod_cliente = []
             self.nome_cliente = []
-            self.sobremone = []
+            self.telefone = []
 
             for linha in c.fetchall():
                 self.cod_cliente.append(linha[0])
                 self.nome_cliente.append(linha[1])
+                self.telefone.append(linha[2])
 
             c.close()
         except mysql.connector.Error as err:

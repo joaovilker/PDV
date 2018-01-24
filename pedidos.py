@@ -59,6 +59,7 @@ class MainPedidos(Ui_ct_main_pedido):
         def selecionar_cliente_popup(row):
             self.tx_pedido_cod_cliente.setText(str(Janela.tableWidget.item(row, 0).text()))
             self.tx_pedido_nome_cliente.setText(Janela.tableWidget.item(row, 1).text())
+            self.tx_pedido_telefone.setText(Janela.tableWidget.item(row, 2).text())
             Dialog.close()
 
         # Buscar Clientes
@@ -75,18 +76,17 @@ class MainPedidos(Ui_ct_main_pedido):
                 Janela.tableWidget.insertRow(i)
                 Janela.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(str(busca.cod_cliente[i])))
                 Janela.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(busca.nome_cliente[i]))
+                Janela.tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(str(busca.telefone[i])))
                 i += 1
 
         # Chamando buscar cliente
         Janela.lineEdit.returnPressed.connect(buscar_cliente)
         #Tabela Resultado
         Janela.tableWidget.setColumnWidth(0, 50)
-        Janela.tableWidget.setColumnWidth(1, 280)
+        Janela.tableWidget.setColumnWidth(1, 180)
+        Janela.tableWidget.setColumnWidth(2, 100)
         Janela.tableWidget.setItem
         Janela.tableWidget.horizontalHeader().setVisible(False)
-        Janela.tableWidget.insertRow(0)
-        Janela.tableWidget.setItem(0, 0, QtGui.QTableWidgetItem("50"))
-        Janela.tableWidget.setItem(0, 1, QtGui.QTableWidgetItem("Teste2"))
         Janela.tableWidget.cellDoubleClicked.connect(selecionar_cliente_popup)
         Dialog.exec_()
 

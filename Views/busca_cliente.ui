@@ -157,6 +157,11 @@ color: #000</string>
        <string>Nome:</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Telefone</string>
+      </property>
+     </column>
     </widget>
    </widget>
   </widget>
