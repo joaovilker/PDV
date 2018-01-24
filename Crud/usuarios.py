@@ -44,15 +44,13 @@ class CrudUsuarios(object):
         except mysql.connector.Error as err:
             print err
 
-    # Buscar Cliente selecionado na Tabela
+    # Buscar usuario selecionado na Tabela
     def buscar_usuarios_selecionado(self, cod):
         conecta = Conexao()
         c = conecta.conecta.cursor()
 
         try:
-            c.execute(""" SELECT usuarios.*, status_usuarios.status FROM usuarios
-            INNER JOIN status_usuarios ON usuarios.status = status_usuarios.id_status 
-            WHERE id_user = '{}' """.format(cod))
+            c.execute(""" SELECT * FROM usuarios WHERE id_user = '{}' """.format(cod))
 
             for linha in c.fetchall():
                 self.id_usuario = linha[0]
@@ -69,7 +67,7 @@ class CrudUsuarios(object):
                 self.cep = linha[11]
                 self.referencia = linha[12]
                 self.cidade = linha[13]
-                self.estado = linha[14]
+                self.estado = int(linha[14])
                 self.nivel = linha[15]
                 self.status = linha[16]
 

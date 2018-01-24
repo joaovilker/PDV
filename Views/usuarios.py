@@ -445,6 +445,24 @@ class Ui_FrameUsuarios(object):
         self.bt_aterar_senha = QtGui.QPushButton(self.ct_usuarios)
         self.bt_aterar_senha.setGeometry(QtCore.QRect(270, 305, 100, 25))
         self.bt_aterar_senha.setObjectName(_fromUtf8("bt_aterar_senha"))
+        self.asterisco = QtGui.QLabel(self.ct_usuarios)
+        self.asterisco.setGeometry(QtCore.QRect(82, 67, 10, 10))
+        self.asterisco.setStyleSheet(_fromUtf8("border: none;\n"
+"border-radius: 0;\n"
+"color: red"))
+        self.asterisco.setObjectName(_fromUtf8("asterisco"))
+        self.asterisco_2 = QtGui.QLabel(self.ct_usuarios)
+        self.asterisco_2.setGeometry(QtCore.QRect(86, 312, 10, 10))
+        self.asterisco_2.setStyleSheet(_fromUtf8("border: none;\n"
+"border-radius: 0;\n"
+"color: red"))
+        self.asterisco_2.setObjectName(_fromUtf8("asterisco_2"))
+        self.label = QtGui.QLabel(self.ct_usuarios)
+        self.label.setGeometry(QtCore.QRect(25, 400, 400, 15))
+        self.label.setStyleSheet(_fromUtf8("border: none;\n"
+"border-radius: 0;\n"
+"color: #0CA3D2"))
+        self.label.setObjectName(_fromUtf8("label"))
         self.ct_usuarios2 = QtGui.QFrame(self.ct_frame_usuarios)
         self.ct_usuarios2.setGeometry(QtCore.QRect(570, 20, 300, 423))
         self.ct_usuarios2.setStyleSheet(_fromUtf8("background: #FFF;\n"
@@ -557,6 +575,9 @@ class Ui_FrameUsuarios(object):
         self.label_clientes_16.setText(_translate("FrameUsuarios", "Nível", None))
         self.label_clientes_17.setText(_translate("FrameUsuarios", "Status", None))
         self.bt_aterar_senha.setText(_translate("FrameUsuarios", "Alterar Senha", None))
+        self.asterisco.setText(_translate("FrameUsuarios", "*", None))
+        self.asterisco_2.setText(_translate("FrameUsuarios", "*", None))
+        self.label.setText(_translate("FrameUsuarios", "* Para novos usuários a senha padrão é 123456", None))
         self.lb_tarefas_agendadas_2.setText(_translate("FrameUsuarios", "Todos os Usuários", None))
         item = self.tabela_usuarios.horizontalHeaderItem(0)
         item.setText(_translate("FrameUsuarios", "Cod", None))

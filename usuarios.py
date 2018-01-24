@@ -39,21 +39,20 @@ class MainUsuarios(Ui_FrameUsuarios):
         # Ajustes, Campos e Acções Formulario
         # Combobox Status
         self.tx_status.addItems(self.combobox_status.lst_status)
-        self.tx_status.setCurrentIndex(1)
+        self.tx_status.setCurrentIndex(0)
         self.tx_status.setEditable(False)
         # Combobox Estados
-        self.tx_estado_usuario.addItem("Estado")
         self.tx_estado_usuario.addItems(self.combobox_status.lista_estados)
         self.tx_estado_usuario.setEditable(True)
-        self.tx_estado_usuario.setCurrentIndex(19)
+        self.tx_estado_usuario.setCurrentIndex(18)
         # Combobox Nível
-        self.tx_nivel_acesso.addItem(u"Nível")
         self.tx_nivel_acesso.addItems(self.combobox_status.lst_nivel)
-        self.tx_nivel_acesso.setCurrentIndex(1)
+
         # Botao cadastrar
         self.bt_cadastrar_usuario.clicked.connect(self.confirmar_usuario)
         # Botao Cancelar
         self.bt_cancelar_.clicked.connect(self.cancelar_cadastro_usuarios)
+        # Estilo dos botões
         self.funcao.estilo_botao_acao(self.bt_cadastrar_usuario, self.bt_cancelar_)
         # Botao Alterar Senha
         self.bt_aterar_senha.setEnabled(False)
@@ -116,7 +115,7 @@ class MainUsuarios(Ui_FrameUsuarios):
         self.tx_estado_usuario.setCurrentIndex(int(busca.estado))
         self.tx_login.setText(busca.usuario)
         self.tx_status.setCurrentIndex(busca.status)
-        self.tx_nivel_acesso.setCurrentIndex(int(busca.nivel))
+        self.tx_nivel_acesso.setCurrentIndex(busca.nivel)
 
         # Ativando Botão Alterar Senha
         self.bt_aterar_senha.setEnabled(True)

@@ -14,10 +14,12 @@ class Funcoes(object):
         botao.setEnabled(False)
 
     def estilo_botao_acao(self, ok, cancelar):
-        ok.setStyleSheet("color: #FFF; border: 2px solid #0CA3D2; border-radius:10px;"
-                                               "background: #FFF; color: #000")
-        cancelar.setStyleSheet("color: #FFF; border: 2px solid red; border-radius:10px;"
-                                              "background: #FFF; color: #000")
+        ok.setStyleSheet("QPushButton{color: #FFF; border: 2px solid #0CA3D2; border-radius:10px;"
+                                               "background: #FFF; color: #000}"
+                         "QPushButton:hover {border: 2px solid #000;}")
+        cancelar.setStyleSheet("QPushButton{color: #FFF; border: 2px solid red; border-radius:10px;"
+                                              "background: #FFF; color: #000}"
+                               "QPushButton:hover {border: 2px solid #000;}")
 
     def botao_padrao(self, frame):
         for filho in frame.findChildren(QtGui.QPushButton):

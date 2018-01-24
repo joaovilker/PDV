@@ -87,7 +87,7 @@ class MainClientes(Ui_frame_clientes):
         self.tx_cep_cliente.setText(str(busca.cep))
         self.tx_referencia_cliente.setText(busca.referencia)
         self.tx_cidade_cliente.setText(busca.cidade)
-        self.tx_estado_cliente.addItem(busca.estado)
+        self.tx_estado_cliente.setCurrentIndex(int(busca.estado))
 
     def busca_na_tabela(self):
         while self.tabela_clientes.rowCount() > 0:
@@ -141,7 +141,7 @@ class MainClientes(Ui_frame_clientes):
         Cadastro.cep = unicode(self.tx_cep_cliente.text()).encode("utf8")
         Cadastro.referencia = unicode(self.tx_referencia_cliente.text()).encode("utf8")
         Cadastro.cidade = unicode(self.tx_cidade_cliente.text()).encode("utf8")
-        Cadastro.estado = unicode(self.tx_estado_cliente.currentText())
+        Cadastro.estado = self.tx_estado_cliente.currentIndex()
         Cadastro.cadastro_cliente()
 
         for filho in self.ct_clientes.findChildren(QtGui.QLineEdit):
