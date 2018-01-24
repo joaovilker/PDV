@@ -104,7 +104,7 @@ color: #000</string>
       <rect>
        <x>25</x>
        <y>60</y>
-       <width>70</width>
+       <width>100</width>
        <height>25</height>
       </rect>
      </property>
@@ -121,18 +121,18 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Cliente:</string>
+      <string>Cod. Cliente</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="tx_pedido_cliente">
+    <widget class="QLineEdit" name="tx_pedido_cod_cliente">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>135</x>
        <y>60</y>
-       <width>340</width>
+       <width>40</width>
        <height>25</height>
       </rect>
      </property>
@@ -144,9 +144,12 @@ color: #000</string>
      <property name="styleSheet">
       <string notr="true">color: #FFF;
 border: 2px solid #0CA3D2;
-border-radius:10px;
+border-radius:8px;
 background: #FFF;
 color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="bt_pedido_localizar_cliente">
@@ -180,7 +183,7 @@ color: #000</string>
       <rect>
        <x>25</x>
        <y>95</y>
-       <width>70</width>
+       <width>100</width>
        <height>25</height>
       </rect>
      </property>
@@ -206,9 +209,9 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_pedido_telefone">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>135</x>
        <y>95</y>
-       <width>340</width>
+       <width>305</width>
        <height>25</height>
       </rect>
      </property>
@@ -230,7 +233,7 @@ color: #000</string>
       <rect>
        <x>25</x>
        <y>165</y>
-       <width>70</width>
+       <width>100</width>
        <height>25</height>
       </rect>
      </property>
@@ -282,9 +285,9 @@ color: #000</string>
     <widget class="QComboBox" name="tx_pedido_produto">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>135</x>
        <y>165</y>
-       <width>340</width>
+       <width>305</width>
        <height>25</height>
       </rect>
      </property>
@@ -356,7 +359,7 @@ color: #000</string>
       <rect>
        <x>25</x>
        <y>130</y>
-       <width>60</width>
+       <width>100</width>
        <height>25</height>
       </rect>
      </property>
@@ -373,18 +376,18 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Data</string>
+      <string>Data Agendada</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QDateEdit" name="dateEdit">
+    <widget class="QDateEdit" name="tx_data_pedido">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>135</x>
        <y>130</y>
-       <width>100</width>
+       <width>95</width>
        <height>25</height>
       </rect>
      </property>
@@ -464,7 +467,12 @@ color: #000</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: #FFF; border: none; border-radius: 0</string>
+      <string notr="true">::section {border-radius: 0; background: red; border: none; color: #000; height: 25px}
+QTableWidget::item:hover{
+background: #000; border: none; border-radius: 0}</string>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::NoSelection</enum>
@@ -479,11 +487,11 @@ color: #000</string>
       <enum>Qt::SolidLine</enum>
      </property>
      <attribute name="verticalHeaderVisible">
-      <bool>true</bool>
+      <bool>false</bool>
      </attribute>
      <row>
       <property name="text">
-       <string>Total</string>
+       <string>New Row</string>
       </property>
      </row>
      <column>
@@ -493,12 +501,12 @@ color: #000</string>
      </column>
      <column>
       <property name="text">
-       <string>Quantidade</string>
+       <string>Qtde.</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Valor Un.</string>
+       <string>Valor</string>
       </property>
      </column>
      <column>
@@ -506,6 +514,31 @@ color: #000</string>
        <string>Total</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string/>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>2222</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>2222</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>2222</string>
+      </property>
+     </item>
+     <item row="0" column="3">
+      <property name="text">
+       <string>222</string>
+      </property>
+     </item>
     </widget>
     <widget class="QPushButton" name="bt_cadastrar_pedido">
      <property name="geometry">
@@ -540,7 +573,131 @@ color: #000</string>
       </font>
      </property>
      <property name="text">
-      <string>Cadastrar</string>
+      <string>Cancelar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_produto_quantidade_4">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>130</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Data Notificar</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="tx_data_notificacao">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>130</y>
+       <width>90</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_concluir_pedido">
+     <property name="geometry">
+      <rect>
+       <x>225</x>
+       <y>370</y>
+       <width>90</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Concluir</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_cliente_pedido_2">
+     <property name="geometry">
+      <rect>
+       <x>185</x>
+       <y>60</y>
+       <width>70</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Nome</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_pedido_nome_cliente">
+     <property name="geometry">
+      <rect>
+       <x>265</x>
+       <y>60</y>
+       <width>170</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>
@@ -606,9 +763,15 @@ color: #000</string>
        <height>250</height>
       </rect>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
      <column>
       <property name="text">
-       <string>Cliente</string>
+       <string>Cod</string>
       </property>
      </column>
      <column>
@@ -618,7 +781,7 @@ color: #000</string>
      </column>
      <column>
       <property name="text">
-       <string>Produto</string>
+       <string>Cliente</string>
       </property>
      </column>
     </widget>
