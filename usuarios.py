@@ -39,15 +39,17 @@ class MainUsuarios(Ui_FrameUsuarios):
         # Ajustes, Campos e Acções Formulario
         # Combobox Status
         self.tx_status.addItems(self.combobox_status.lst_status)
-        self.tx_status.setCurrentIndex(0)
+        self.tx_status.setCurrentIndex(1)
         self.tx_status.setEditable(False)
         # Combobox Estados
         self.tx_estado_usuario.addItem("Estado")
         self.tx_estado_usuario.addItems(self.combobox_status.lista_estados)
         self.tx_estado_usuario.setEditable(True)
+        self.tx_estado_usuario.setCurrentIndex(19)
         # Combobox Nível
         self.tx_nivel_acesso.addItem(u"Nível")
         self.tx_nivel_acesso.addItems(self.combobox_status.lst_nivel)
+        self.tx_nivel_acesso.setCurrentIndex(1)
         # Botao cadastrar
         self.bt_cadastrar_usuario.clicked.connect(self.confirmar_usuario)
         # Botao Cancelar
@@ -149,17 +151,17 @@ class MainUsuarios(Ui_FrameUsuarios):
         cadastro.telefone = unicode(self.tx_telefone_usuario.text()).encode("utf8")
         cadastro.cpf = unicode(self.tx_cpf_usuario.text()).encode("utf8")
         cadastro.endereco = unicode(self.tx_endereco_usuario.text()).encode("utf8")
-        cadastro.num = str(self.tx_numero_endereco_usuario.text())
+        cadastro.num = self.tx_numero_endereco_usuario.text()
         cadastro.bairro = unicode(self.tx_bairo_usuario.text()).encode("utf8")
         cadastro.comeplemento = unicode(self.tx_complemento_usuario.text()).encode("utf8")
         cadastro.cep = unicode(self.tx_cep_usuario.text()).encode("utf8")
         cadastro.referencia = unicode(self.tx_referencia_usuario.text()).encode("utf8")
         cadastro.cidade = unicode(self.tx_cidade_usuario.text()).encode("utf8")
-        cadastro.estado = str(self.tx_estado_usuario.currentIndex())
+        cadastro.estado = self.tx_estado_usuario.currentIndex()
         cadastro.usuario = unicode(self.tx_login.text()).encode("utf8")
 
-        cadastro.nivel = str(self.tx_nivel_acesso.currentIndex())
-        cadastro.status = str(self.tx_status.currentIndex())
+        cadastro.nivel = self.tx_nivel_acesso.currentIndex()
+        cadastro.status = self.tx_status.currentIndex()
         cadastro.cadastro_usuarios()
 
         # Limpando e atualizando a tabela
@@ -250,22 +252,23 @@ class MainUsuarios(Ui_FrameUsuarios):
             Confirm = Ui_Dialog()
             Confirm.setConfirmacao(DConfirm)
             Confirm.lb_info.setText(QtCore.QString.fromUtf8("Usuário"))
-            Confirm.lb_titulo_modal.setText(QtCore.QString.fromUtf8("Senha Alterado"))
+            Confirm.lb_titulo_modal.setText(QtCore.QString.fromUtf8("Senha Alterada !"))
             Confirm.lb_descricao.setText(unicode(self.tx_nome_usuario.text()))
             Confirm.buttonBox.setStyleSheet("color: #FFF; border: 2px solid #0CA3D2; border-radius:10px;"
                                            "background: #FFF; color: #000; width: 100px; height: 30px")
             QtCore.QObject.connect(Confirm.buttonBox, QtCore.SIGNAL("accepted()"), fechar_janela)
             DConfirm.exec_()
 
+
         # Acao botao Alterar senha
         PopUp.bt_dialog_alterar_senha.clicked.connect(altera_senha)
-
         # Chamando comparador de senha
         PopUp.tx_senha_antiga_3.textChanged.connect(compara_nova_senha)
         # Titulo do Poput
         Dialog.setWindowTitle("Alterar senha")
         # Executando o PoPup
         Dialog.exec_()
+    # Fim Janela Altarar senha
 
 
     def alteracao_senha(self, senha):
@@ -274,9 +277,9 @@ class MainUsuarios(Ui_FrameUsuarios):
     def cancelar_cadastro_usuarios(self):
         for filho in self.ct_usuarios.findChildren(QtGui.QLineEdit):
             filho.clear()
-
-        self.tx_estado_usuario.setCurrentIndex(0)
-        self.tx_nivel_acesso.setCurrentIndex(0)
-        self.tx_status.setCurrentIndex(0)
+        self.tx_cod_usuario.clear()
+        self.tx_estado_usuario.setCurrentIndex(19)
+        self.tx_nivel_acesso.setCurrentIndex(1)
+        self.tx_status.setCurrentIndex(1)
         self.busca_usuarios()
         self.bt_aterar_senha.setEnabled(False)

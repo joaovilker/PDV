@@ -109,7 +109,6 @@ class Ui_FrameUsuarios(object):
 "border-radius:10px;\n"
 "background: #FFF;\n"
 "color: #000"))
-        self.tx_telefone_usuario.setText(_fromUtf8(""))
         self.tx_telefone_usuario.setObjectName(_fromUtf8("tx_telefone_usuario"))
         self.label_clientes_3 = QtGui.QLabel(self.ct_usuarios)
         self.label_clientes_3.setGeometry(QtCore.QRect(230, 60, 75, 25))
@@ -157,7 +156,6 @@ class Ui_FrameUsuarios(object):
 "border-radius:10px;\n"
 "background: #FFF;\n"
 "color: #000"))
-        self.tx_cpf_usuario.setText(_fromUtf8(""))
         self.tx_cpf_usuario.setObjectName(_fromUtf8("tx_cpf_usuario"))
         self.label_clientes_5 = QtGui.QLabel(self.ct_usuarios)
         self.label_clientes_5.setGeometry(QtCore.QRect(25, 130, 75, 25))
@@ -299,8 +297,6 @@ class Ui_FrameUsuarios(object):
 "background: #FFF;\n"
 "color: #000"))
         self.tx_estado_usuario.setObjectName(_fromUtf8("tx_estado_usuario"))
-        self.tx_estado_usuario.addItem(_fromUtf8(""))
-        self.tx_estado_usuario.addItem(_fromUtf8(""))
         self.label_clientes_11 = QtGui.QLabel(self.ct_usuarios)
         self.label_clientes_11.setGeometry(QtCore.QRect(25, 200, 75, 25))
         font = QtGui.QFont()
@@ -323,7 +319,6 @@ class Ui_FrameUsuarios(object):
 "border-radius:10px;\n"
 "background: #FFF;\n"
 "color: #000"))
-        self.tx_cep_usuario.setText(_fromUtf8(""))
         self.tx_cep_usuario.setObjectName(_fromUtf8("tx_cep_usuario"))
         self.label_clientes_12 = QtGui.QLabel(self.ct_usuarios)
         self.label_clientes_12.setGeometry(QtCore.QRect(230, 200, 75, 25))
@@ -512,7 +507,7 @@ class Ui_FrameUsuarios(object):
         self.label_clientes_18.setObjectName(_fromUtf8("label_clientes_18"))
 
         self.tradUsuarios(FrameUsuarios)
-        self.tx_estado_usuario.setCurrentIndex(0)
+        self.tx_estado_usuario.setCurrentIndex(-1)
         QtCore.QMetaObject.connectSlotsByName(FrameUsuarios)
         FrameUsuarios.setTabOrder(self.tx_nome_usuario, self.tx_sobrenome_usuario)
         FrameUsuarios.setTabOrder(self.tx_sobrenome_usuario, self.tx_telefone_usuario)
@@ -539,17 +534,21 @@ class Ui_FrameUsuarios(object):
         self.lb_pedidos_agendados_2.setText(_translate("FrameUsuarios", "Cadastrar / Editar Usuário", None))
         self.label_clientes.setText(_translate("FrameUsuarios", "Nome", None))
         self.label_clientes_2.setText(_translate("FrameUsuarios", "Telefone", None))
+        self.tx_telefone_usuario.setInputMask(_translate("FrameUsuarios", "(00) 00000-0000; ", None))
+        self.tx_telefone_usuario.setText(_translate("FrameUsuarios", "() -", None))
         self.label_clientes_3.setText(_translate("FrameUsuarios", "Sobrenome", None))
         self.label_clientes_4.setText(_translate("FrameUsuarios", "CPF", None))
+        self.tx_cpf_usuario.setInputMask(_translate("FrameUsuarios", "000.000.000-00; ", None))
+        self.tx_cpf_usuario.setText(_translate("FrameUsuarios", "..-", None))
         self.label_clientes_5.setText(_translate("FrameUsuarios", "Endereço", None))
         self.label_clientes_6.setText(_translate("FrameUsuarios", "Num.", None))
         self.label_clientes_7.setText(_translate("FrameUsuarios", "Bairro", None))
         self.label_clientes_8.setText(_translate("FrameUsuarios", "Compl.", None))
         self.label_clientes_9.setText(_translate("FrameUsuarios", "Cidade", None))
         self.label_clientes_10.setText(_translate("FrameUsuarios", "Estado", None))
-        self.tx_estado_usuario.setItemText(0, _translate("FrameUsuarios", "RJ", None))
-        self.tx_estado_usuario.setItemText(1, _translate("FrameUsuarios", "SP", None))
         self.label_clientes_11.setText(_translate("FrameUsuarios", "Cep", None))
+        self.tx_cep_usuario.setInputMask(_translate("FrameUsuarios", "0000-000; ", None))
+        self.tx_cep_usuario.setText(_translate("FrameUsuarios", "-", None))
         self.label_clientes_12.setText(_translate("FrameUsuarios", "Referência", None))
         self.bt_cadastrar_usuario.setText(_translate("FrameUsuarios", "Cadastrar", None))
         self.bt_cancelar_.setText(_translate("FrameUsuarios", "Cancelar", None))
