@@ -152,4 +152,3 @@ class CrudUsuarios(object):
             # print self.id_usuario
         except mysql.connector.Error as err:
             print err
-
