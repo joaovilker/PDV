@@ -5,6 +5,7 @@ from Views.pedidos import Ui_ct_main_pedido
 from Views.confirmacao import Ui_Dialog
 from Views.busca_cliente import Ui_DialogBuscarCliente
 from Class.Funcoes import Funcoes
+from Crud.clientes import CrudCliente
 
 
 class MainPedidos(Ui_ct_main_pedido):
@@ -53,13 +54,31 @@ class MainPedidos(Ui_ct_main_pedido):
         Dialog = QtGui.QDialog()
         Janela = Ui_DialogBuscarCliente()
         Janela.setBuscarCliente(Dialog)
-        #Funcoes da Janela
+        # Funcoes da Janela
+        # Selecionar CLiente e Fechar
         def selecionar_cliente_popup(row):
             self.tx_pedido_cod_cliente.setText(str(Janela.tableWidget.item(row, 0).text()))
             self.tx_pedido_nome_cliente.setText(Janela.tableWidget.item(row, 1).text())
             Dialog.close()
-        # Ajustes de Parametros
 
+        # Buscar Clientes
+        def buscar_cliente():
+            # Chamando Classe Crud Cliente
+            busca = CrudCliente()
+            busca.busca_tabela(Janela.lineEdit.text())
+
+            #limpando Tabele
+            while Janela.tableWidget.rowCount() > 0:
+                Janela.tableWidget.removeRow(0)
+            i = 0
+            while i < len(busca.nome_cliente):
+                Janela.tableWidget.insertRow(i)
+                Janela.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(str(busca.cod_cliente[i])))
+                Janela.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(busca.nome_cliente[i]))
+                i += 1
+
+        # Chamando buscar cliente
+        Janela.lineEdit.returnPressed.connect(buscar_cliente)
         #Tabela Resultado
         Janela.tableWidget.setColumnWidth(0, 50)
         Janela.tableWidget.setColumnWidth(1, 280)
