@@ -24,6 +24,7 @@ class MainPedidos(Ui_ct_main_pedido):
         # Localizar CLiente
         self.bt_pedido_localizar_cliente.setIcon(QtGui.QIcon('Images/buscar.png'))
         self.bt_pedido_localizar_cliente.setIconSize(QtCore.QSize(20, 20))
+        # Botao Localizar Produto
         # Add produto
         self.bt_pedido_add_produto.setIcon(QtGui.QIcon('Images/add.png'))
         self.bt_pedido_add_produto.setIconSize(QtCore.QSize(20, 20))
@@ -39,9 +40,11 @@ class MainPedidos(Ui_ct_main_pedido):
         # Campo data com data atual
         self.tx_data_pedido.setDate(QtCore.QDate.currentDate())
         self.tx_data_notificacao.setDate(QtCore.QDate.currentDate())
+        # Busca cod produto
+        self.tx_pedido_cod_produto.setReadOnly(False)
+        self.tx_pedido_cod_produto.returnPressed.connect(self.localizar_produto_codigo)
         # Campo produtos
-        self.tx_pedido_produto.setEditable(True)
-        self.tx_pedido_produto.addItems(self.produtos.lst_produtos)
+
 
         # Botao Concluir PEdido
         efeito = QtGui.QGraphicsDropShadowEffect()
@@ -86,7 +89,7 @@ class MainPedidos(Ui_ct_main_pedido):
         def buscar_cliente():
             # Chamando Classe Crud Cliente
             busca_cliente = CrudCliente()
-            busca_cliente.busca_cliente_tabela(Janela.lineEdit.text())
+            busca_cliente.busca_tabela(Janela.lineEdit.text())
 
             #limpando Tabele
             while Janela.tableWidget.rowCount() > 0:
@@ -110,6 +113,10 @@ class MainPedidos(Ui_ct_main_pedido):
         Janela.tableWidget.cellDoubleClicked.connect(selecionar_cliente_popup)
         Dialog.exec_()
 
+    def localizar_produto_codigo(self):
+        self.produtos.busca_edicao(self.tx_pedido_cod_produto.text())
+        self.tx_pedido_produto.setText(self.produtos.descricao)
+
 
     #Janela Confirmação
     def confirmar_pedido(self):
@@ -126,3 +133,5 @@ class MainPedidos(Ui_ct_main_pedido):
 
         while self.tabela_pedido_add.rowCount() > 0:
             self.tabela_pedido_add.removeRow(0)
+
+

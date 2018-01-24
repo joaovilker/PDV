@@ -250,7 +250,7 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Produto</string>
+      <string>Cod Produto</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -280,28 +280,6 @@ color: #000</string>
        <width>20</width>
        <height>20</height>
       </size>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="tx_pedido_produto">
-     <property name="geometry">
-      <rect>
-       <x>135</x>
-       <y>165</y>
-       <width>305</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #0CA3D2;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
      </property>
     </widget>
     <widget class="QLabel" name="lb_produto_quantidade">
@@ -396,6 +374,9 @@ color: #000</string>
        <family>Segoe UI</family>
       </font>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">color: #FFF;
 border: 2px solid #0CA3D2;
@@ -467,9 +448,7 @@ color: #000</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">::section {border-radius: 0; background: red; border: none; color: #000; height: 25px}
-QTableWidget::item:hover{
-background: #000; border: none; border-radius: 0}</string>
+      <string notr="true">background: #FFF; border: none; border-radius: 0</string>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -618,6 +597,9 @@ color: #000</string>
        <family>Segoe UI</family>
       </font>
      </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">color: #FFF;
 border: 2px solid #0CA3D2;
@@ -700,6 +682,110 @@ color: #000</string>
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLineEdit" name="tx_pedido_cod_produto">
+     <property name="geometry">
+      <rect>
+       <x>135</x>
+       <y>165</y>
+       <width>40</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:8px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_cliente_pedido_3">
+     <property name="geometry">
+      <rect>
+       <x>185</x>
+       <y>165</y>
+       <width>70</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Produto</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_pedido_localizar_produto">
+     <property name="geometry">
+      <rect>
+       <x>445</x>
+       <y>165</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_pedido_produto">
+     <property name="geometry">
+      <rect>
+       <x>265</x>
+       <y>165</y>
+       <width>170</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="ct_frame_pedidos_pendente">
     <property name="geometry">
@@ -724,9 +810,9 @@ border-radius: 20px;</string>
     <widget class="QLabel" name="lb_pedidos_agendados">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>75</x>
        <y>10</y>
-       <width>200</width>
+       <width>150</width>
        <height>30</height>
       </rect>
      </property>
@@ -762,6 +848,14 @@ color: #000</string>
        <width>290</width>
        <height>250</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: #FFF; border: none; border-radius: 0</string>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>

@@ -6,7 +6,7 @@ from conexao import Conexao
 class CrudProdutos(object):
 
     def __init__(self, cod_produto="", descricao="", qtde_minima="", qtde_disponivel="", valor_compra="",
-                 valor_venda="", fornecedor="", tipo="", obs="", lst_produtos =""):
+                 valor_venda="", fornecedor="", tipo="", obs="", lst_produtos ="", dic_produtos=""):
         self.cod_produto = cod_produto
         self.descricao = descricao
         self.qtde_minima = qtde_minima
@@ -17,6 +17,7 @@ class CrudProdutos(object):
         self.tipo_produto = tipo
         self.obs = obs
         self.lst_produtos = lst_produtos
+        self.dic_produtos = dic_produtos
 
     def crud_lista_produtos(self):
         conecta = Conexao()
@@ -26,6 +27,7 @@ class CrudProdutos(object):
         self.descricao = []
         self.qtde_disponivel = []
         self.lst_produtos = []
+        self.dic_produtos= {}
 
         try:
             c.execute(""" SELECT id_produto, produto, quantidade_estoque FROM produtos""")
@@ -34,7 +36,8 @@ class CrudProdutos(object):
                 self.cod_produto.append(linha[0])
                 self.descricao.append(linha[1])
                 self.qtde_disponivel.append(linha[2])
-                self.lst_produtos.append(u"{} - {}".format(linha[0], linha[1]))
+                self.lst_produtos.append(u"{}".format(linha[1]))
+                self.dic_produtos.update({u"{}".format(linha[1]): u"{}".format(linha[0])})
             c.close()
         except mysql.connector.Error as err:
             print err
@@ -102,7 +105,8 @@ class CrudProdutos(object):
 
 
 # busca = CrudProdutos()
-# busca.busca_edicao(2)
+# busca.crud_lista_produtos()
+# print busca.dic_produtos
 # print busca.descricao
 # busca.descricao = "Caneca Cerêmica"
 # busca.qtde_minima = '5'

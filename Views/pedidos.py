@@ -143,17 +143,6 @@ class Ui_ct_main_pedido(object):
         self.bt_pedido_add_produto.setText(_fromUtf8(""))
         self.bt_pedido_add_produto.setIconSize(QtCore.QSize(20, 20))
         self.bt_pedido_add_produto.setObjectName(_fromUtf8("bt_pedido_add_produto"))
-        self.tx_pedido_produto = QtGui.QComboBox(self.ct_frame_pedidos)
-        self.tx_pedido_produto.setGeometry(QtCore.QRect(135, 165, 305, 25))
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Segoe UI"))
-        self.tx_pedido_produto.setFont(font)
-        self.tx_pedido_produto.setStyleSheet(_fromUtf8("color: #FFF;\n"
-"border: 2px solid #0CA3D2;\n"
-"border-radius:10px;\n"
-"background: #FFF;\n"
-"color: #000"))
-        self.tx_pedido_produto.setObjectName(_fromUtf8("tx_pedido_produto"))
         self.lb_produto_quantidade = QtGui.QLabel(self.ct_frame_pedidos)
         self.lb_produto_quantidade.setGeometry(QtCore.QRect(25, 200, 70, 25))
         font = QtGui.QFont()
@@ -194,6 +183,7 @@ class Ui_ct_main_pedido(object):
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Segoe UI"))
         self.tx_data_pedido.setFont(font)
+        self.tx_data_pedido.setFocusPolicy(QtCore.Qt.NoFocus)
         self.tx_data_pedido.setStyleSheet(_fromUtf8("color: #FFF;\n"
 "border: 2px solid #0CA3D2;\n"
 "border-radius:10px;\n"
@@ -234,7 +224,9 @@ class Ui_ct_main_pedido(object):
         self.tabela_pedido_add.setGridStyle(QtCore.Qt.SolidLine)
         self.tabela_pedido_add.setObjectName(_fromUtf8("tabela_pedido_add"))
         self.tabela_pedido_add.setColumnCount(5)
-        self.tabela_pedido_add.setRowCount(0)
+        self.tabela_pedido_add.setRowCount(1)
+        item = QtGui.QTableWidgetItem()
+        self.tabela_pedido_add.setVerticalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
         self.tabela_pedido_add.setHorizontalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
@@ -245,6 +237,14 @@ class Ui_ct_main_pedido(object):
         self.tabela_pedido_add.setHorizontalHeaderItem(3, item)
         item = QtGui.QTableWidgetItem()
         self.tabela_pedido_add.setHorizontalHeaderItem(4, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabela_pedido_add.setItem(0, 0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabela_pedido_add.setItem(0, 1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabela_pedido_add.setItem(0, 2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tabela_pedido_add.setItem(0, 3, item)
         self.tabela_pedido_add.verticalHeader().setVisible(False)
         self.bt_cadastrar_pedido = QtGui.QPushButton(self.ct_frame_pedidos)
         self.bt_cadastrar_pedido.setGeometry(QtCore.QRect(25, 370, 90, 30))
@@ -275,6 +275,7 @@ class Ui_ct_main_pedido(object):
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Segoe UI"))
         self.tx_data_notificacao.setFont(font)
+        self.tx_data_notificacao.setFocusPolicy(QtCore.Qt.NoFocus)
         self.tx_data_notificacao.setStyleSheet(_fromUtf8("color: #FFF;\n"
 "border: 2px solid #0CA3D2;\n"
 "border-radius:10px;\n"
@@ -312,6 +313,52 @@ class Ui_ct_main_pedido(object):
 "color: #000"))
         self.tx_pedido_nome_cliente.setReadOnly(True)
         self.tx_pedido_nome_cliente.setObjectName(_fromUtf8("tx_pedido_nome_cliente"))
+        self.tx_pedido_cod_produto = QtGui.QLineEdit(self.ct_frame_pedidos)
+        self.tx_pedido_cod_produto.setGeometry(QtCore.QRect(135, 165, 40, 25))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Segoe UI"))
+        self.tx_pedido_cod_produto.setFont(font)
+        self.tx_pedido_cod_produto.setStyleSheet(_fromUtf8("color: #FFF;\n"
+"border: 2px solid #0CA3D2;\n"
+"border-radius:8px;\n"
+"background: #FFF;\n"
+"color: #000"))
+        self.tx_pedido_cod_produto.setReadOnly(True)
+        self.tx_pedido_cod_produto.setObjectName(_fromUtf8("tx_pedido_cod_produto"))
+        self.lb_cliente_pedido_3 = QtGui.QLabel(self.ct_frame_pedidos)
+        self.lb_cliente_pedido_3.setGeometry(QtCore.QRect(185, 165, 70, 25))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Arial"))
+        self.lb_cliente_pedido_3.setFont(font)
+        self.lb_cliente_pedido_3.setStyleSheet(_fromUtf8("color: #FFF;\n"
+"border: 2px solid #ff00ff;\n"
+"border-radius:10px;\n"
+"background: #FFF;\n"
+"color: #000"))
+        self.lb_cliente_pedido_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.lb_cliente_pedido_3.setObjectName(_fromUtf8("lb_cliente_pedido_3"))
+        self.bt_pedido_localizar_produto = QtGui.QPushButton(self.ct_frame_pedidos)
+        self.bt_pedido_localizar_produto.setGeometry(QtCore.QRect(445, 165, 30, 30))
+        self.bt_pedido_localizar_produto.setStyleSheet(_fromUtf8("color: #FFF;\n"
+"border: 2px solid #0CA3D2;\n"
+"border-radius:10px;\n"
+"background: #FFF;\n"
+"color: #000"))
+        self.bt_pedido_localizar_produto.setText(_fromUtf8(""))
+        self.bt_pedido_localizar_produto.setIconSize(QtCore.QSize(20, 20))
+        self.bt_pedido_localizar_produto.setObjectName(_fromUtf8("bt_pedido_localizar_produto"))
+        self.tx_pedido_produto = QtGui.QLineEdit(self.ct_frame_pedidos)
+        self.tx_pedido_produto.setGeometry(QtCore.QRect(265, 165, 170, 25))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Segoe UI"))
+        self.tx_pedido_produto.setFont(font)
+        self.tx_pedido_produto.setStyleSheet(_fromUtf8("color: #FFF;\n"
+"border: 2px solid #0CA3D2;\n"
+"border-radius:10px;\n"
+"background: #FFF;\n"
+"color: #000"))
+        self.tx_pedido_produto.setReadOnly(True)
+        self.tx_pedido_produto.setObjectName(_fromUtf8("tx_pedido_produto"))
         self.ct_frame_pedidos_pendente = QtGui.QFrame(self.frame_geral_pedido)
         self.ct_frame_pedidos_pendente.setGeometry(QtCore.QRect(570, 20, 300, 423))
         self.ct_frame_pedidos_pendente.setStyleSheet(_fromUtf8("background: #FFF;\n"
@@ -321,7 +368,7 @@ class Ui_ct_main_pedido(object):
         self.ct_frame_pedidos_pendente.setFrameShadow(QtGui.QFrame.Raised)
         self.ct_frame_pedidos_pendente.setObjectName(_fromUtf8("ct_frame_pedidos_pendente"))
         self.lb_pedidos_agendados = QtGui.QLabel(self.ct_frame_pedidos_pendente)
-        self.lb_pedidos_agendados.setGeometry(QtCore.QRect(50, 10, 200, 30))
+        self.lb_pedidos_agendados.setGeometry(QtCore.QRect(75, 10, 150, 30))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Segoe UI"))
         font.setPointSize(12)
@@ -339,6 +386,10 @@ class Ui_ct_main_pedido(object):
         self.lb_pedidos_agendados.setObjectName(_fromUtf8("lb_pedidos_agendados"))
         self.tabela_pedidos = QtGui.QTableWidget(self.ct_frame_pedidos_pendente)
         self.tabela_pedidos.setGeometry(QtCore.QRect(5, 60, 290, 250))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Segoe UI"))
+        self.tabela_pedidos.setFont(font)
+        self.tabela_pedidos.setStyleSheet(_fromUtf8("background: #FFF; border: none; border-radius: 0"))
         self.tabela_pedidos.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tabela_pedidos.setObjectName(_fromUtf8("tabela_pedidos"))
         self.tabela_pedidos.setColumnCount(3)
@@ -382,10 +433,12 @@ class Ui_ct_main_pedido(object):
         self.lb_agendar_pedido.setText(_translate("ct_main_pedido", "Editor de Pedido", None))
         self.lb_cliente_pedido.setText(_translate("ct_main_pedido", "Cod. Cliente", None))
         self.lb_telefone_pedido.setText(_translate("ct_main_pedido", "Telefone", None))
-        self.lb_produto_pedido.setText(_translate("ct_main_pedido", "Produto", None))
+        self.lb_produto_pedido.setText(_translate("ct_main_pedido", "Cod Produto", None))
         self.lb_produto_quantidade.setText(_translate("ct_main_pedido", "Quant.", None))
         self.lb_produto_quantidade_2.setText(_translate("ct_main_pedido", "Data Agendada", None))
         self.lb_produto_quantidade_3.setText(_translate("ct_main_pedido", "Valor", None))
+        item = self.tabela_pedido_add.verticalHeaderItem(0)
+        item.setText(_translate("ct_main_pedido", "New Row", None))
         item = self.tabela_pedido_add.horizontalHeaderItem(0)
         item.setText(_translate("ct_main_pedido", "Produto", None))
         item = self.tabela_pedido_add.horizontalHeaderItem(1)
@@ -394,11 +447,23 @@ class Ui_ct_main_pedido(object):
         item.setText(_translate("ct_main_pedido", "Valor", None))
         item = self.tabela_pedido_add.horizontalHeaderItem(3)
         item.setText(_translate("ct_main_pedido", "Total", None))
+        __sortingEnabled = self.tabela_pedido_add.isSortingEnabled()
+        self.tabela_pedido_add.setSortingEnabled(False)
+        item = self.tabela_pedido_add.item(0, 0)
+        item.setText(_translate("ct_main_pedido", "2222", None))
+        item = self.tabela_pedido_add.item(0, 1)
+        item.setText(_translate("ct_main_pedido", "2222", None))
+        item = self.tabela_pedido_add.item(0, 2)
+        item.setText(_translate("ct_main_pedido", "2222", None))
+        item = self.tabela_pedido_add.item(0, 3)
+        item.setText(_translate("ct_main_pedido", "222", None))
+        self.tabela_pedido_add.setSortingEnabled(__sortingEnabled)
         self.bt_cadastrar_pedido.setText(_translate("ct_main_pedido", "Cadastrar", None))
         self.bt_cancelar_pedido.setText(_translate("ct_main_pedido", "Cancelar", None))
         self.lb_produto_quantidade_4.setText(_translate("ct_main_pedido", "Data Notificar", None))
         self.bt_concluir_pedido.setText(_translate("ct_main_pedido", "Concluir", None))
         self.lb_cliente_pedido_2.setText(_translate("ct_main_pedido", "Nome", None))
+        self.lb_cliente_pedido_3.setText(_translate("ct_main_pedido", "Produto", None))
         self.lb_pedidos_agendados.setText(_translate("ct_main_pedido", "Pedidos Pendentes", None))
         item = self.tabela_pedidos.horizontalHeaderItem(0)
         item.setText(_translate("ct_main_pedido", "Cod", None))
