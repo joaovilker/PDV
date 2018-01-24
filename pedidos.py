@@ -6,6 +6,7 @@ from Views.confirmacao import Ui_Dialog
 from Views.busca_cliente import Ui_DialogBuscarCliente
 from Class.Funcoes import Funcoes
 from Crud.clientes import CrudCliente
+from Crud.estoque import CrudProdutos
 
 
 class MainPedidos(Ui_ct_main_pedido):
@@ -15,6 +16,8 @@ class MainPedidos(Ui_ct_main_pedido):
 
         # Classes
         self.funcoes = Funcoes()
+        self.produtos = CrudProdutos()
+        self.produtos.crud_lista_produtos()
 
         # Estilo dos Botoes
         self.funcoes.estilo_botao_acao(self.bt_cadastrar_pedido, self.bt_cancelar_pedido)
@@ -28,11 +31,28 @@ class MainPedidos(Ui_ct_main_pedido):
         self.bt_cadastrar_pedido.clicked.connect(self.confirmar_pedido)
         # Cancelar_pedido
         self.bt_cancelar_pedido.setText("Cancelar")
+        self.bt_cancelar_pedido.clicked.connect(self.cancelar_cad_pedido)
 
         # Estilo, acao e comando do Formulário
         # Buscar Cliente
         self.bt_pedido_localizar_cliente.clicked.connect(self.janela_busca_cliente)
+        # Campo data com data atual
+        self.tx_data_pedido.setDate(QtCore.QDate.currentDate())
+        self.tx_data_notificacao.setDate(QtCore.QDate.currentDate())
+        # Campo produtos
+        self.tx_pedido_produto.setEditable(True)
+        self.tx_pedido_produto.addItems(self.produtos.lst_produtos)
 
+        # Botao Concluir PEdido
+        efeito = QtGui.QGraphicsDropShadowEffect()
+        efeito.setColor(QtGui.QColor("#ff00ff"))
+        efeito.setOffset(0, 0)
+        efeito.setBlurRadius(15)
+        self.bt_concluir_pedido.setGraphicsEffect(efeito)
+        self.bt_concluir_pedido.setStyleSheet(" QPushButton{border-radius: 10px; border: none; background: #00ffff;}"
+                            "QPushButton:disabled {background: #FFF}"
+                            "QPushButton:hover {color: #FFF}")
+        self.bt_concluir_pedido.setEnabled(False)
 
 
         # Tamanho, acao  e conteudo tabela  produtos pedido
@@ -65,21 +85,21 @@ class MainPedidos(Ui_ct_main_pedido):
         # Buscar Clientes
         def buscar_cliente():
             # Chamando Classe Crud Cliente
-            busca = CrudCliente()
-            busca.busca_tabela(Janela.lineEdit.text())
+            busca_cliente = CrudCliente()
+            busca_cliente.busca_cliente_tabela(Janela.lineEdit.text())
 
             #limpando Tabele
             while Janela.tableWidget.rowCount() > 0:
                 Janela.tableWidget.removeRow(0)
             i = 0
-            while i < len(busca.nome_cliente):
+            while i < len(busca_cliente.nome_cliente):
                 Janela.tableWidget.insertRow(i)
-                Janela.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(str(busca.cod_cliente[i])))
-                Janela.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(busca.nome_cliente[i]))
-                Janela.tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(str(busca.telefone[i])))
+                Janela.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(str(busca_cliente.cod_cliente[i])))
+                Janela.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(busca_cliente.nome_cliente[i]))
+                Janela.tableWidget.setItem(i, 2, QtGui.QTableWidgetItem(str(busca_cliente.telefone[i])))
                 i += 1
 
-        # Chamando buscar cliente
+        # Chamando busca_clienter cliente
         Janela.lineEdit.returnPressed.connect(buscar_cliente)
         #Tabela Resultado
         Janela.tableWidget.setColumnWidth(0, 50)
@@ -97,3 +117,12 @@ class MainPedidos(Ui_ct_main_pedido):
         Dialog = QtGui.QDialog()
         Janela.setConfirmacao(Dialog)
         Dialog.exec_()
+
+    #Cancelar
+    def cancelar_cad_pedido(self):
+        for filho in self.ct_frame_pedidos.findChildren(QtGui.QLineEdit):
+            filho.clear()
+        self.tx_data_notificacao.setDate(QtCore.QDate.currentDate())
+
+        while self.tabela_pedido_add.rowCount() > 0:
+            self.tabela_pedido_add.removeRow(0)

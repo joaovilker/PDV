@@ -6,7 +6,7 @@ from conexao import Conexao
 class CrudProdutos(object):
 
     def __init__(self, cod_produto="", descricao="", qtde_minima="", qtde_disponivel="", valor_compra="",
-                 valor_venda="", fornecedor="", tipo="", obs=""):
+                 valor_venda="", fornecedor="", tipo="", obs="", lst_produtos =""):
         self.cod_produto = cod_produto
         self.descricao = descricao
         self.qtde_minima = qtde_minima
@@ -16,6 +16,7 @@ class CrudProdutos(object):
         self.fornecedor = fornecedor
         self.tipo_produto = tipo
         self.obs = obs
+        self.lst_produtos = lst_produtos
 
     def crud_lista_produtos(self):
         conecta = Conexao()
@@ -24,6 +25,7 @@ class CrudProdutos(object):
         self.cod_produto = []
         self.descricao = []
         self.qtde_disponivel = []
+        self.lst_produtos = []
 
         try:
             c.execute(""" SELECT id_produto, produto, quantidade_estoque FROM produtos""")
@@ -32,6 +34,7 @@ class CrudProdutos(object):
                 self.cod_produto.append(linha[0])
                 self.descricao.append(linha[1])
                 self.qtde_disponivel.append(linha[2])
+                self.lst_produtos.append(u"{} - {}".format(linha[0], linha[1]))
             c.close()
         except mysql.connector.Error as err:
             print err
