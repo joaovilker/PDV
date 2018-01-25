@@ -80,6 +80,7 @@ class Ui_DialogBuscarProduto(object):
 "border: 2px solide #FFF;\n"
 "background: #FFF;\n"
 "color: #000"))
+        self.table_busca_produto.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.table_busca_produto.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.table_busca_produto.setObjectName(_fromUtf8("table_busca_produto"))
         self.table_busca_produto.setColumnCount(3)
@@ -104,5 +105,5 @@ class Ui_DialogBuscarProduto(object):
         item = self.table_busca_produto.horizontalHeaderItem(1)
         item.setText(_translate("DialogBuscarProduto", "Produto", None))
         item = self.table_busca_produto.horizontalHeaderItem(2)
-        item.setText(_translate("DialogBuscarProduto", "Qtde.", None))
+        item.setText(_translate("DialogBuscarProduto", "Valor", None))
 

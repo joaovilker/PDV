@@ -46,7 +46,7 @@ class MainPedidos(Ui_ct_main_pedido):
         self.tx_data_notificacao.setDate(QtCore.QDate.currentDate())
         # Busca cod produto
         self.tx_pedido_cod_produto.setReadOnly(False)
-        self.tx_pedido_cod_produto.returnPressed.connect(self.localizar_produto_codigo)
+        self.tx_pedido_cod_produto.returnPressed.connect(lambda : self.localizar_produto_codigo(self.tx_pedido_cod_produto.text()))
         # Campo produtos
 
 
@@ -112,7 +112,6 @@ class MainPedidos(Ui_ct_main_pedido):
         Janela.tableWidget.setColumnWidth(0, 50)
         Janela.tableWidget.setColumnWidth(1, 180)
         Janela.tableWidget.setColumnWidth(2, 100)
-        Janela.tableWidget.setItem
         Janela.tableWidget.horizontalHeader().setVisible(False)
         Janela.tableWidget.cellDoubleClicked.connect(selecionar_cliente_popup)
         Dialog.exec_()
@@ -122,15 +121,33 @@ class MainPedidos(Ui_ct_main_pedido):
         Janela = Ui_DialogBuscarProduto()
         Dialog = QtGui.QDialog()
         Janela.setBuscarProduto(Dialog)
+        # Funcao Buscar Produto
+        def buscar_produto():
+            self.produtos.crud_busca_produto(Janela.tx_busca_produto.text())
+            i = 0
+            while i < len(self.produtos.descricao):
+                Janela.table_busca_produto.insertRow(i)
+                Janela.table_busca_produto.setItem(i, 0, QtGui.QTableWidgetItem(str(self.produtos.cod_produto[i])))
+                Janela.table_busca_produto.setItem(i, 1, QtGui.QTableWidgetItem(self.produtos.descricao[i]))
+                Janela.table_busca_produto.setItem(i, 2, QtGui.QTableWidgetItem(format(self.produtos.valor_venda[i], ".2f")))
+                i += 1
+
+        def selecionar_produto(row):
+            self.localizar_produto_codigo(Janela.table_busca_produto.item(row, 0).text())
+            self.tx_pedido_cod_produto.setText(Janela.table_busca_produto.item(row, 0).text())
+
+        # Campo Buscar produto
+        Janela.tx_busca_produto.returnPressed.connect(buscar_produto)
         # Ajustes da Tabela
         Janela.table_busca_produto.setColumnWidth(0, 50)
         Janela.table_busca_produto.setColumnWidth(1, 210)
-        Janela.table_busca_produto.setColumnWidth(2, 80)
+        Janela.table_busca_produto.setColumnWidth(2, 75)
+        Janela.table_busca_produto.cellDoubleClicked.connect(selecionar_produto)
         Dialog.exec_()
 
 
-    def localizar_produto_codigo(self):
-        self.produtos.busca_edicao(self.tx_pedido_cod_produto.text())
+    def localizar_produto_codigo(self, cod):
+        self.produtos.busca_edicao(cod)
         self.tx_pedido_produto.setText(self.produtos.descricao)
 
 

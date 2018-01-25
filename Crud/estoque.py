@@ -26,8 +26,8 @@ class CrudProdutos(object):
         self.cod_produto = []
         self.descricao = []
         self.qtde_disponivel = []
-        self.lst_produtos = []
-        self.dic_produtos= {}
+
+
 
         try:
             c.execute(""" SELECT id_produto, produto, quantidade_estoque FROM produtos""")
@@ -36,8 +36,7 @@ class CrudProdutos(object):
                 self.cod_produto.append(linha[0])
                 self.descricao.append(linha[1])
                 self.qtde_disponivel.append(linha[2])
-                self.lst_produtos.append(u"{}".format(linha[1]))
-                self.dic_produtos.update({u"{}".format(linha[1]): u"{}".format(linha[0])})
+
             c.close()
         except mysql.connector.Error as err:
             print err
@@ -49,15 +48,17 @@ class CrudProdutos(object):
         self.cod_produto = []
         self.descricao = []
         self.qtde_disponivel = []
+        self.valor_venda = []
 
         try:
-            c.execute(""" SELECT id_produto, produto, quantidade_estoque FROM produtos WHERE produto LIKE  "%{}%" """
+            c.execute(""" SELECT id_produto, produto, quantidade_estoque, valor_venda FROM produtos 
+            WHERE produto LIKE  "%{}%" """
                       .format(cod))
             for linha in c.fetchall():
                 self.cod_produto.append(linha[0])
                 self.descricao.append(linha[1])
                 self.qtde_disponivel.append(linha[2])
-
+                self.valor_venda.append(linha[3])
             c.close()
 
         except mysql.connector.Error as err:
