@@ -416,7 +416,7 @@ color: #000</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLineEdit" name="tx_pedido_quantidade_2">
+    <widget class="QLineEdit" name="tx_pedido_valor_produto">
      <property name="geometry">
       <rect>
        <x>210</x>

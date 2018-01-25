@@ -135,6 +135,7 @@ class MainPedidos(Ui_ct_main_pedido):
         def selecionar_produto(row):
             self.localizar_produto_codigo(Janela.table_busca_produto.item(row, 0).text())
             self.tx_pedido_cod_produto.setText(Janela.table_busca_produto.item(row, 0).text())
+            Dialog.close()
 
         # Campo Buscar produto
         Janela.tx_busca_produto.returnPressed.connect(buscar_produto)
@@ -149,6 +150,7 @@ class MainPedidos(Ui_ct_main_pedido):
     def localizar_produto_codigo(self, cod):
         self.produtos.busca_edicao(cod)
         self.tx_pedido_produto.setText(self.produtos.descricao)
+        self.tx_preco_uni.setText(format(self.produtos.valor_venda, ".2f"))
 
 
     #Janela Confirmação

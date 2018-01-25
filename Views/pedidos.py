@@ -203,17 +203,17 @@ class Ui_ct_main_pedido(object):
 "color: #000"))
         self.lb_produto_quantidade_3.setAlignment(QtCore.Qt.AlignCenter)
         self.lb_produto_quantidade_3.setObjectName(_fromUtf8("lb_produto_quantidade_3"))
-        self.tx_pedido_quantidade_2 = QtGui.QLineEdit(self.ct_frame_pedidos)
-        self.tx_pedido_quantidade_2.setGeometry(QtCore.QRect(210, 200, 70, 25))
+        self.tx_preco_uni = QtGui.QLineEdit(self.ct_frame_pedidos)
+        self.tx_preco_uni.setGeometry(QtCore.QRect(210, 200, 70, 25))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Segoe UI"))
-        self.tx_pedido_quantidade_2.setFont(font)
-        self.tx_pedido_quantidade_2.setStyleSheet(_fromUtf8("color: #FFF;\n"
+        self.tx_preco_uni.setFont(font)
+        self.tx_preco_uni.setStyleSheet(_fromUtf8("color: #FFF;\n"
 "border: 2px solid #0CA3D2;\n"
 "border-radius:10px;\n"
 "background: #FFF;\n"
 "color: #000"))
-        self.tx_pedido_quantidade_2.setObjectName(_fromUtf8("tx_pedido_quantidade_2"))
+        self.tx_preco_uni.setObjectName(_fromUtf8("tx_preco_uni"))
         self.tabela_pedido_add = QtGui.QTableWidget(self.ct_frame_pedidos)
         self.tabela_pedido_add.setGeometry(QtCore.QRect(25, 235, 450, 130))
         self.tabela_pedido_add.setStyleSheet(_fromUtf8("background: #FFF; border: none; border-radius: 0"))
