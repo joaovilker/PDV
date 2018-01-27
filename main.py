@@ -17,7 +17,7 @@ class Main(QtGui.QMainWindow, Ui_MainWindow, Funcoes, MainHome, MainEstoque, Mai
         super(Main, self).__init__(parent)
         self.setupUi(self)
         self.janela_home()
-        self.setFixedSize(900, 621)
+        self.setFixedSize(900, 721)
 
         # parametros Inicias
         # Titulo e Logo

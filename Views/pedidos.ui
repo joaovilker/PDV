@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>493</height>
+    <height>593</height>
    </rect>
   </property>
   <property name="font">
@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>900</width>
-     <height>493</height>
+     <height>593</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -51,7 +51,7 @@
       <x>30</x>
       <y>20</y>
       <width>500</width>
-      <height>423</height>
+      <height>523</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -148,9 +148,6 @@ border-radius:8px;
 background: #FFF;
 color: #000</string>
      </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
     </widget>
     <widget class="QPushButton" name="bt_pedido_localizar_cliente">
      <property name="geometry">
@@ -226,6 +223,9 @@ border: 2px solid #0CA3D2;
 border-radius:10px;
 background: #FFF;
 color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QLabel" name="lb_produto_pedido">
@@ -311,6 +311,9 @@ color: #000</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="tx_pedido_quantidade">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -444,11 +447,14 @@ color: #000</string>
        <x>25</x>
        <y>235</y>
        <width>450</width>
-       <height>130</height>
+       <height>200</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">background: #FFF; border: none; border-radius: 0</string>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
@@ -468,11 +474,11 @@ color: #000</string>
      <attribute name="verticalHeaderVisible">
       <bool>false</bool>
      </attribute>
-     <row>
+     <column>
       <property name="text">
-       <string>New Row</string>
+       <string>cod</string>
       </property>
-     </row>
+     </column>
      <column>
       <property name="text">
        <string>Produto</string>
@@ -493,37 +499,12 @@ color: #000</string>
        <string>Total</string>
       </property>
      </column>
-     <column>
-      <property name="text">
-       <string/>
-      </property>
-     </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string>2222</string>
-      </property>
-     </item>
-     <item row="0" column="1">
-      <property name="text">
-       <string>2222</string>
-      </property>
-     </item>
-     <item row="0" column="2">
-      <property name="text">
-       <string>2222</string>
-      </property>
-     </item>
-     <item row="0" column="3">
-      <property name="text">
-       <string>222</string>
-      </property>
-     </item>
     </widget>
     <widget class="QPushButton" name="bt_cadastrar_pedido">
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>370</y>
+       <y>480</y>
        <width>90</width>
        <height>30</height>
       </rect>
@@ -541,7 +522,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>125</x>
-       <y>370</y>
+       <y>480</y>
        <width>90</width>
        <height>30</height>
       </rect>
@@ -612,10 +593,13 @@ color: #000</string>
      </property>
     </widget>
     <widget class="QPushButton" name="bt_concluir_pedido">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>225</x>
-       <y>370</y>
+       <y>480</y>
        <width>90</width>
        <height>30</height>
       </rect>
@@ -683,6 +667,9 @@ color: #000</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="tx_pedido_cod_produto">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>135</x>
@@ -736,6 +723,9 @@ color: #000</string>
      </property>
     </widget>
     <widget class="QPushButton" name="bt_pedido_localizar_produto">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>445</x>
@@ -786,6 +776,34 @@ color: #000</string>
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLineEdit" name="tx_total_pedido">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>440</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Total</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="ct_frame_pedidos_pendente">
     <property name="geometry">
@@ -793,7 +811,7 @@ color: #000</string>
       <x>570</x>
       <y>20</y>
       <width>300</width>
-      <height>423</height>
+      <height>523</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -846,7 +864,7 @@ color: #000</string>
        <x>5</x>
        <y>60</y>
        <width>290</width>
-       <height>250</height>
+       <height>370</height>
       </rect>
      </property>
      <property name="font">
@@ -883,7 +901,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>370</y>
+       <y>470</y>
        <width>200</width>
        <height>30</height>
       </rect>
@@ -906,7 +924,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>100</x>
-       <y>340</y>
+       <y>440</y>
        <width>100</width>
        <height>25</height>
       </rect>

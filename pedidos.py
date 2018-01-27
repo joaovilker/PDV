@@ -20,6 +20,14 @@ class MainPedidos(Ui_ct_main_pedido):
         self.produtos = CrudProdutos()
         self.produtos.crud_lista_produtos()
 
+        # Dasabilitando campos até serem preenchidos outros
+        # Busca código e Lupa busca
+        self.tx_pedido_cod_produto.setEnabled(True)
+        self.bt_pedido_localizar_produto.setEnabled(True)
+        self.tx_pedido_quantidade.setEnabled(True)
+
+
+
         # Estilo dos Botoes
         self.funcoes.estilo_botao_acao(self.bt_cadastrar_pedido, self.bt_cancelar_pedido)
         # Localizar CLiente
@@ -29,9 +37,13 @@ class MainPedidos(Ui_ct_main_pedido):
         self.bt_pedido_localizar_produto.setIcon(QtGui.QIcon('Images/buscar.png'))
         self.bt_pedido_localizar_produto.setIconSize(QtCore.QSize(20, 20))
         self.bt_pedido_localizar_produto.clicked.connect(self.janela_buscar_produto)
-        # Add produto
         self.bt_pedido_add_produto.setIcon(QtGui.QIcon('Images/add.png'))
         self.bt_pedido_add_produto.setIconSize(QtCore.QSize(20, 20))
+        self.bt_pedido_add_produto.clicked.connect(self.add_produto_tabela)
+
+
+
+
         # Cadastrar Pedido
         self.bt_cadastrar_pedido.clicked.connect(self.confirmar_pedido)
         # Cancelar_pedido
@@ -45,8 +57,13 @@ class MainPedidos(Ui_ct_main_pedido):
         self.tx_data_pedido.setDate(QtCore.QDate.currentDate())
         self.tx_data_notificacao.setDate(QtCore.QDate.currentDate())
         # Busca cod produto
+        self.tx_pedido_cod_produto.setValidator(QtGui.QIntValidator())
         self.tx_pedido_cod_produto.setReadOnly(False)
         self.tx_pedido_cod_produto.returnPressed.connect(lambda : self.localizar_produto_codigo(self.tx_pedido_cod_produto.text()))
+        # Focus on return pressed
+        self.tx_pedido_cod_produto.returnPressed.connect(lambda: self.foco(self.tx_pedido_quantidade))
+        self.tx_pedido_quantidade.returnPressed.connect(lambda: self.foco(self.tx_pedido_valor_produto))
+        self.tx_pedido_valor_produto.returnPressed.connect(self.add_produto_tabela)
         # Campo produtos
 
 
@@ -59,15 +76,17 @@ class MainPedidos(Ui_ct_main_pedido):
         self.bt_concluir_pedido.setStyleSheet(" QPushButton{border-radius: 10px; border: none; background: #00ffff;}"
                             "QPushButton:disabled {background: #FFF}"
                             "QPushButton:hover {color: #FFF}")
-        self.bt_concluir_pedido.setEnabled(False)
+
 
 
         # Tamanho, acao  e conteudo tabela  produtos pedido
-        self.tabela_pedido_add.setColumnWidth(0, 200)
-        self.tabela_pedido_add.setColumnWidth(1, 70)
+        self.tabela_pedido_add.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.tabela_pedido_add.setColumnWidth(0, 30)
+        self.tabela_pedido_add.setColumnWidth(1, 200)
         self.tabela_pedido_add.setColumnWidth(2, 70)
         self.tabela_pedido_add.setColumnWidth(3, 70)
-        self.tabela_pedido_add.setColumnWidth(4, 30)
+        self.tabela_pedido_add.setColumnWidth(4, 70)
+
 
         # Tamanho, acao  e conteudo tabela Pedidos Pendentes
         self.tabela_pedidos.setColumnWidth(0, 40)
@@ -87,6 +106,9 @@ class MainPedidos(Ui_ct_main_pedido):
             self.tx_pedido_cod_cliente.setText(str(Janela.tableWidget.item(row, 0).text()))
             self.tx_pedido_nome_cliente.setText(Janela.tableWidget.item(row, 1).text())
             self.tx_pedido_telefone.setText(Janela.tableWidget.item(row, 2).text())
+            self.bt_pedido_localizar_produto.setEnabled(True)
+            self.tx_pedido_cod_produto.setEnabled(True)
+            self.tx_pedido_cod_produto.setFocus()
             Dialog.close()
 
         # Buscar Clientes
@@ -135,6 +157,9 @@ class MainPedidos(Ui_ct_main_pedido):
         def selecionar_produto(row):
             self.localizar_produto_codigo(Janela.table_busca_produto.item(row, 0).text())
             self.tx_pedido_cod_produto.setText(Janela.table_busca_produto.item(row, 0).text())
+            self.tx_pedido_quantidade.setText("1")
+            self.bt_pedido_add_produto.setEnabled(True)
+            self.tx_pedido_quantidade.setFocus()
             Dialog.close()
 
         # Campo Buscar produto
@@ -148,9 +173,37 @@ class MainPedidos(Ui_ct_main_pedido):
 
 
     def localizar_produto_codigo(self, cod):
-        self.produtos.busca_edicao(cod)
-        self.tx_pedido_produto.setText(self.produtos.descricao)
-        self.tx_preco_uni.setText(format(self.produtos.valor_venda, ".2f"))
+        if len(cod) >= 1:
+            self.produtos.busca_edicao(cod)
+            self.tx_pedido_cod_produto.setText(str(self.produtos.cod_produto))
+            self.tx_pedido_produto.setText(self.produtos.descricao)
+            self.tx_pedido_valor_produto.setText(format(self.produtos.valor_venda, ".2f"))
+            self.tx_pedido_quantidade.setText("1")
+            self.bt_pedido_add_produto.setEnabled(True)
+
+
+
+    def add_produto_tabela(self):
+        if len(self.tx_pedido_cod_produto.text()) >= 1 :
+            self.tabela_pedido_add.insertRow(0)
+            self.tabela_pedido_add.setItem(0, 0, QtGui.QTableWidgetItem(self.tx_pedido_cod_produto.text()))
+            self.tabela_pedido_add.setItem(0, 1, QtGui.QTableWidgetItem(self.tx_pedido_produto.text()))
+            self.tabela_pedido_add.setItem(0, 2, QtGui.QTableWidgetItem(str(self.tx_pedido_quantidade.text())))
+            self.tabela_pedido_add.setItem(0, 3, QtGui.QTableWidgetItem(str(self.tx_pedido_valor_produto.text())))
+            total = float(self.tx_pedido_valor_produto.text()) * float(self.tx_pedido_quantidade.text())
+            total = format(total, ".2f")
+            self.tabela_pedido_add.setItem(0, 4, QtGui.QTableWidgetItem(str(total)))
+
+
+            self.tx_pedido_cod_produto.clear()
+            self.tx_pedido_produto.clear()
+            self.tx_pedido_quantidade.clear()
+            self.tx_pedido_valor_produto.clear()
+            self.tx_pedido_cod_produto.setFocus()
+            self.bt_pedido_add_produto.setEnabled(False)
+        else:
+            self.tx_pedido_cod_produto.setFocus()
+
 
 
     #Janela Confirmação
@@ -168,5 +221,10 @@ class MainPedidos(Ui_ct_main_pedido):
 
         while self.tabela_pedido_add.rowCount() > 0:
             self.tabela_pedido_add.removeRow(0)
+
+    # Funcao foco lineedit
+    def foco(self, botao):
+        botao.setFocus()
+        botao.selectAll()
 
 
