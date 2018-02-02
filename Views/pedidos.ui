@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>593</height>
+    <height>524</height>
    </rect>
   </property>
   <property name="font">
@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>900</width>
-     <height>593</height>
+     <height>524</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -50,8 +50,8 @@
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>500</width>
-      <height>523</height>
+      <width>840</width>
+      <height>453</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -69,9 +69,9 @@ border-radius: 20px;
     <widget class="QLabel" name="lb_agendar_pedido">
      <property name="geometry">
       <rect>
-       <x>25</x>
+       <x>200</x>
        <y>10</y>
-       <width>450</width>
+       <width>440</width>
        <height>30</height>
       </rect>
      </property>
@@ -93,7 +93,7 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Editor de Pedido</string>
+      <string>Cadastrar / Editar Pedido</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -103,7 +103,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>60</y>
+       <y>85</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -121,7 +121,7 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Cod. Cliente</string>
+      <string>Cod</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -131,7 +131,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>135</x>
-       <y>60</y>
+       <y>85</y>
        <width>40</width>
        <height>25</height>
       </rect>
@@ -152,9 +152,9 @@ color: #000</string>
     <widget class="QPushButton" name="bt_pedido_localizar_cliente">
      <property name="geometry">
       <rect>
-       <x>445</x>
-       <y>55</y>
-       <width>30</width>
+       <x>720</x>
+       <y>80</y>
+       <width>40</width>
        <height>30</height>
       </rect>
      </property>
@@ -178,8 +178,8 @@ color: #000</string>
     <widget class="QLabel" name="lb_telefone_pedido">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>95</y>
+       <x>450</x>
+       <y>85</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -206,9 +206,9 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_pedido_telefone">
      <property name="geometry">
       <rect>
-       <x>135</x>
-       <y>95</y>
-       <width>305</width>
+       <x>570</x>
+       <y>85</y>
+       <width>135</width>
        <height>25</height>
       </rect>
      </property>
@@ -232,7 +232,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>165</y>
+       <y>155</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -257,11 +257,14 @@ color: #000</string>
      </property>
     </widget>
     <widget class="QPushButton" name="bt_pedido_add_produto">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>195</y>
-       <width>30</width>
+       <x>720</x>
+       <y>185</y>
+       <width>40</width>
        <height>30</height>
       </rect>
      </property>
@@ -285,8 +288,8 @@ color: #000</string>
     <widget class="QLabel" name="lb_produto_quantidade">
      <property name="geometry">
       <rect>
-       <x>25</x>
-       <y>200</y>
+       <x>445</x>
+       <y>155</y>
        <width>70</width>
        <height>25</height>
       </rect>
@@ -316,8 +319,8 @@ color: #000</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>200</y>
+       <x>525</x>
+       <y>155</y>
        <width>30</width>
        <height>25</height>
       </rect>
@@ -335,67 +338,11 @@ background: #FFF;
 color: #000</string>
      </property>
     </widget>
-    <widget class="QLabel" name="lb_produto_quantidade_2">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>130</y>
-       <width>100</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #ff00ff;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="text">
-      <string>Data Agendada</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QDateEdit" name="tx_data_pedido">
-     <property name="geometry">
-      <rect>
-       <x>135</x>
-       <y>130</y>
-       <width>95</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #0CA3D2;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QLabel" name="lb_produto_quantidade_3">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>200</y>
+       <x>565</x>
+       <y>155</y>
        <width>60</width>
        <height>25</height>
       </rect>
@@ -422,8 +369,8 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_pedido_valor_produto">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>200</y>
+       <x>635</x>
+       <y>155</y>
        <width>70</width>
        <height>25</height>
       </rect>
@@ -445,10 +392,16 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>235</y>
-       <width>450</width>
-       <height>200</height>
+       <y>225</y>
+       <width>790</width>
+       <height>150</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>8</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background: #FFF; border: none; border-radius: 0</string>
@@ -496,128 +449,25 @@ color: #000</string>
      </column>
      <column>
       <property name="text">
+       <string>Tema</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Obs</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>Total</string>
       </property>
      </column>
-    </widget>
-    <widget class="QPushButton" name="bt_cadastrar_pedido">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>480</y>
-       <width>90</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>Cadastrar</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="bt_cancelar_pedido">
-     <property name="geometry">
-      <rect>
-       <x>125</x>
-       <y>480</y>
-       <width>90</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>Cancelar</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="lb_produto_quantidade_4">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>130</y>
-       <width>100</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #ff00ff;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="text">
-      <string>Data Notificar</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QDateEdit" name="tx_data_notificacao">
-     <property name="geometry">
-      <rect>
-       <x>350</x>
-       <y>130</y>
-       <width>90</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #0CA3D2;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="bt_concluir_pedido">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>225</x>
-       <y>480</y>
-       <width>90</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Segoe UI</family>
-      </font>
-     </property>
-     <property name="text">
-      <string>Concluir</string>
-     </property>
     </widget>
     <widget class="QLabel" name="lb_cliente_pedido_2">
      <property name="geometry">
       <rect>
        <x>185</x>
-       <y>60</y>
+       <y>85</y>
        <width>70</width>
        <height>25</height>
       </rect>
@@ -645,7 +495,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>265</x>
-       <y>60</y>
+       <y>85</y>
        <width>170</width>
        <height>25</height>
       </rect>
@@ -673,7 +523,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>135</x>
-       <y>165</y>
+       <y>155</y>
        <width>40</width>
        <height>25</height>
       </rect>
@@ -698,7 +548,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>185</x>
-       <y>165</y>
+       <y>155</y>
        <width>70</width>
        <height>25</height>
       </rect>
@@ -728,9 +578,9 @@ color: #000</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>445</x>
-       <y>165</y>
-       <width>30</width>
+       <x>720</x>
+       <y>150</y>
+       <width>40</width>
        <height>30</height>
       </rect>
      </property>
@@ -755,7 +605,7 @@ color: #000</string>
      <property name="geometry">
       <rect>
        <x>265</x>
-       <y>165</y>
+       <y>155</y>
        <width>170</width>
        <height>25</height>
       </rect>
@@ -779,15 +629,17 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_total_pedido">
      <property name="geometry">
       <rect>
-       <x>375</x>
-       <y>440</y>
-       <width>100</width>
+       <x>750</x>
+       <y>390</y>
+       <width>70</width>
        <height>25</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -797,6 +649,12 @@ border-radius:10px;
 background: #FFF;
 color: #000</string>
      </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -804,44 +662,20 @@ color: #000</string>
       <string>Total</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QFrame" name="ct_frame_pedidos_pendente">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>20</y>
-      <width>300</width>
-      <height>523</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: #FFF;
-border: 2px solid #fff;
-border-radius: 20px;</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="lb_pedidos_agendados">
+    <widget class="QLabel" name="lb_produto_quantidade_5">
      <property name="geometry">
       <rect>
-       <x>75</x>
-       <y>10</y>
-       <width>150</width>
-       <height>30</height>
+       <x>660</x>
+       <y>390</y>
+       <width>80</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
-       <pointsize>12</pointsize>
-       <weight>50</weight>
-       <italic>true</italic>
-       <bold>false</bold>
-       <underline>false</underline>
+       <family>Arial</family>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -852,79 +686,37 @@ background: #FFF;
 color: #000</string>
      </property>
      <property name="text">
-      <string>Pedidos Pendentes</string>
+      <string>Total R$:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QTableWidget" name="tabela_pedidos">
+    <widget class="QLabel" name="lb_dados">
      <property name="geometry">
       <rect>
-       <x>5</x>
-       <y>60</y>
-       <width>290</width>
-       <height>370</height>
+       <x>25</x>
+       <y>55</y>
+       <width>80</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Segoe Print</family>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background: #FFF; border: none; border-radius: 0</string>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>Cod</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Data</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Cliente</string>
-      </property>
-     </column>
-    </widget>
-    <widget class="QLineEdit" name="tx_buscar_pedidos">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>470</y>
-       <width>200</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #0CA3D2;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="placeholderText">
-      <string>Buscar</string>
+     <property name="text">
+      <string>Cliente:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_buscar_tarefa">
+    <widget class="QLabel" name="lb_produto_pedido_2">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>440</y>
+       <x>25</x>
+       <y>190</y>
        <width>100</width>
        <height>25</height>
       </rect>
@@ -938,20 +730,290 @@ color: #000</string>
       <string notr="true">color: #FFF;
 border: 2px solid #ff00ff;
 border-radius:10px;
-background: #FFF url('/Files/Python/AeR/Images/buscar.png') no-repeat  right ;
-color: #000;
-</string>
+background: #FFF;
+color: #000</string>
      </property>
      <property name="text">
-      <string>Pesquisar</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::AutoText</enum>
+      <string>Tema</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QLabel" name="lb_produto_pedido_3">
+     <property name="geometry">
+      <rect>
+       <x>265</x>
+       <y>190</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Obs.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_obs">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>190</y>
+       <width>330</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="tx_tema">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>190</y>
+       <width>125</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_cliente_pedido_4">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>120</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Data Entrega</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="tx_data_entrega">
+     <property name="geometry">
+      <rect>
+       <x>135</x>
+       <y>120</y>
+       <width>120</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:8px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="displayFormat">
+      <string notr="true">dd/MM/yyyy</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_cliente_pedido_5">
+     <property name="geometry">
+      <rect>
+       <x>265</x>
+       <y>120</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Status</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="combo_status_pedido">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>120</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="bt_cadastrar_pedido_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>480</y>
+      <width>120</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Buscar Pedidos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_cadastrar_pedido_3">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>480</y>
+      <width>120</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Temas</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_cadastrar_pedido">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>480</y>
+      <width>120</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cadastrar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_cancelar_pedido">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>480</y>
+      <width>120</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cancelar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_concluir_pedido">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>480</y>
+      <width>120</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>Concluir</string>
+    </property>
    </widget>
   </widget>
  </widget>

@@ -30,3 +30,4 @@ class Funcoes(object):
             filho.setGraphicsEffect(efeito)
             filho.setStyleSheet(" QPushButton{border-radius: 10px; border: none; background: #00ffff;}"
                                 "QPushButton:disabled {background: #FFF}")
+

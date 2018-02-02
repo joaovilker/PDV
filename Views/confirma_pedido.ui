@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_pedido</class>
+ <widget class="QDialog" name="Dialog_pedido">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>250</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Confirmação</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>250</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #0CA3D2</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>380</width>
+      <height>230</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: #FFF;
+border: 5px solid #fFf;
+border-radius: 20px;
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="lb_titulo_modal">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>200</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Confirmar Pedido</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_info">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Data de Entrega</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_info_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>105</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Entrada</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_valor_entrada">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>105</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lb_info_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>140</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #ff00ff;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="text">
+      <string>Saldo devedor</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_saldo_devedor">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>140</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="tx_data_entrega">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>70</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_ok_pedido">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_cancel_pedido">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>180</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cancelar</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

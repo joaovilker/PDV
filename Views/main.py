@@ -25,7 +25,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(900, 721)
+        MainWindow.resize(900, 651)
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)
         self.centralwidget = QtGui.QWidget(MainWindow)
@@ -130,7 +130,7 @@ class Ui_MainWindow(object):
         self.bt_caixa.setIconSize(QtCore.QSize(90, 30))
         self.bt_caixa.setObjectName(_fromUtf8("bt_caixa"))
         self.ct_conteudo = QtGui.QFrame(self.centralwidget)
-        self.ct_conteudo.setGeometry(QtCore.QRect(0, 85, 900, 593))
+        self.ct_conteudo.setGeometry(QtCore.QRect(0, 85, 900, 524))
         self.ct_conteudo.setStyleSheet(_fromUtf8("background: #0CA3D2"))
         self.ct_conteudo.setFrameShape(QtGui.QFrame.NoFrame)
         self.ct_conteudo.setFrameShadow(QtGui.QFrame.Plain)
