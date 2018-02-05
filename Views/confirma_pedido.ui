@@ -84,7 +84,7 @@ color: #000</string>
     <widget class="QLabel" name="lb_info">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>70</x>
        <y>70</y>
        <width>110</width>
        <height>25</height>
@@ -112,7 +112,7 @@ color: #000</string>
     <widget class="QLabel" name="lb_info_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>70</x>
        <y>105</y>
        <width>110</width>
        <height>25</height>
@@ -140,7 +140,7 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_valor_entrada">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>190</x>
        <y>105</y>
        <width>110</width>
        <height>25</height>
@@ -153,11 +153,14 @@ border-radius:10px;
 background: #FFF;
 color: #000</string>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
     </widget>
     <widget class="QLabel" name="lb_info_3">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>70</x>
        <y>140</y>
        <width>110</width>
        <height>25</height>
@@ -185,7 +188,7 @@ color: #000</string>
     <widget class="QLineEdit" name="tx_saldo_devedor">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>190</x>
        <y>140</y>
        <width>110</width>
        <height>25</height>
@@ -202,30 +205,10 @@ color: #000</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QDateEdit" name="tx_data_entrega">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>70</y>
-       <width>110</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #FFF;
-border: 2px solid #0CA3D2;
-border-radius:10px;
-background: #FFF;
-color: #000</string>
-     </property>
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QPushButton" name="bt_ok_pedido">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>75</x>
        <y>180</y>
        <width>100</width>
        <height>30</height>
@@ -238,7 +221,7 @@ color: #000</string>
     <widget class="QPushButton" name="bt_cancel_pedido">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>195</x>
        <y>180</y>
        <width>100</width>
        <height>30</height>
@@ -246,6 +229,26 @@ color: #000</string>
      </property>
      <property name="text">
       <string>Cancelar</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="tx_data_entrega">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>70</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFF;
+border: 2px solid #0CA3D2;
+border-radius:10px;
+background: #FFF;
+color: #000</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

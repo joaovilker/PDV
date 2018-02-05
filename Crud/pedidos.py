@@ -4,9 +4,9 @@ from conexao import Conexao
 import mysql.connector
 
 class CrudPedidos(object):
-    def __init__(self, cod_pedido="", cliente="", data_aviso="", data_entrega="", status="", entrada="", devedor="",
+    def __init__(self, cod_pedido="", cod_produto="", cliente="", data_aviso="", data_entrega="", status="", entrada="", devedor="",
                  valor_total = "", id_relacao="", produto = "", qtde="", valor_produto="", total_produto="", tema="",
-                 obs="", dic_status_pedidos=""):
+                 obs="", lst_status_pedido="", dic_status_pedidos=""):
         self.cod_pedido = cod_pedido
         self.cliente = cliente
         self.data_aviso = data_aviso
@@ -22,7 +22,9 @@ class CrudPedidos(object):
         self.total_produto = total_produto
         self.tema = tema
         self.obs = obs
-        self.dic_status_pedidos = dic_status_pedidos
+        self.lst_status_pedido = lst_status_pedido
+        self.dic_status_pedido = dic_status_pedidos
+        self.cod_produto = cod_produto
 
     def cad_pedido(self):
         conecta = Conexao()
@@ -89,20 +91,69 @@ class CrudPedidos(object):
 
         try:
             c.execute(""" SELECT * FROM status_pedido """)
-            self.dic_status_pedidos = []
+            self.lst_status_pedido = []
+            self.dic_status_pedido = {}
             for linha in c.fetchall():
-                self.dic_status_pedidos.append(linha[1])
+                self.lst_status_pedido.append(linha[1])
+                self.dic_status_pedido.update({linha[1]: linha[0]})
+
+            c.close()
         except mysql.connector.Error as err:
             print err
 
-        return self.dic_status_pedidos
+        return self.lst_status_pedido
+
+    def selecionar_pedido(self, cod):
+        conecta = Conexao()
+        c = conecta.conecta.cursor()
+
+        try:
+            c.execute(""" SELECT relacao_pedido.*, pedidos.*, clientes.* , produtos.*  from relacao_pedido
+            INNER JOIN pedidos ON  relacao_pedido.cod_pedido = pedidos.id_pedido
+            INNER JOIN clientes ON pedidos.cliente = id_cliente
+            INNER JOIN produtos ON relacao_pedido.produto = produtos.id_produto
+              
+            WHERE id_pedido = {}""".format(cod) )
+
+            self.cod_produto = []
+            self.produto = []
+            self.qtde = []
+            self.valor_produto = []
+            self.tema = []
+            self.obs = []
+            self.total_produto = []
+
+
+
+            for linha in c.fetchall():
+                self.cod_produto.append(linha[1])
+                self.cliente = (linha[15])
+                self.produto.append(linha[29])
+                self.qtde.append(linha[3])
+                self.valor_produto.append(linha[4])
+                self.tema.append(linha[6])
+                self.total_produto.append(linha[5])
+                self.obs.append(linha[7])
+                self.valor_total = linha[14]
+                self.entrada = linha[12]
+                self.saldo_devedor = linha[13]
 
 
 
 
+
+
+
+        except mysql.connector.Error as err:
+            print err
+
+
+
+
+#
 busca = CrudPedidos()
-busca.busca_pedidos("")
-print busca.status_pedido
+busca.selecionar_pedido(14)
+print busca.produto
 
 # busca.produto = 2
 # busca.qtde = 2

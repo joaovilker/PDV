@@ -10,8 +10,6 @@ class BuscaPedido(QtGui.QDialog, Ui_BuscaPedido):
         self.todos_pedidos()
 
 
-
-
     def todos_pedidos(self):
         busca = unicode(self.lineEdit.text()).encode("utf8")
         busca = CrudPedidos()

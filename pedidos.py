@@ -82,7 +82,15 @@ class MainPedidos(Ui_ct_main_pedido):
         self.id_pedido = QtGui.QLineEdit()
         self.id_pedido.setVisible(False)
         # Campo Status
+        self.combo_status_pedido.addItem("Status")
         self.combo_status_pedido.addItems(self.pedidos.combo_status_data())
+        self.combo_status_pedido.setCurrentIndex(2)
+        self.combo_status_pedido.currentIndexChanged.connect(lambda : self.foco(self.tx_pedido_cod_produto))
+        # Campo Data Entrega
+        self.tx_data_entrega.setDate(QtCore.QDate.currentDate())
+        self.tx_data_entrega.dateChanged.connect(lambda :self.foco_combobox(self.combo_status_pedido))
+        # Calculo saldo devedor
+        self.tx_entrada_pedido.returnPressed.connect(self.saldo_devedor)
 
 
 
@@ -124,7 +132,8 @@ class MainPedidos(Ui_ct_main_pedido):
             self.tx_pedido_telefone.setText(Janela.tableWidget.item(row, 2).text())
             self.bt_pedido_localizar_produto.setEnabled(True)
             self.tx_pedido_cod_produto.setEnabled(True)
-            self.tx_pedido_cod_produto.setFocus()
+            self.tx_data_entrega.setFocus()
+            self.tx_data_entrega.selectAll()
             Dialog.close()
 
         # Buscar Clientes
@@ -163,7 +172,8 @@ class MainPedidos(Ui_ct_main_pedido):
         self.tx_pedido_telefone.setText(busca_cliente.telefone)
         self.bt_pedido_localizar_produto.setEnabled(True)
         self.tx_pedido_cod_produto.setEnabled(True)
-        self.tx_pedido_cod_produto.setFocus()
+        self.tx_data_entrega.setFocus()
+        self.tx_data_entrega.selectAll()
 
 
     # Janela Buscar Produto
@@ -250,6 +260,7 @@ class MainPedidos(Ui_ct_main_pedido):
             total = total + float(self.tabela_pedido_add.item(i, 6).text())
             i += 1
         self.tx_total_pedido.setText(format(total, ".2f"))
+        self.tx_saldo_devedor_pedido.setText(format(total, ".2f"))
 
     # Remover Item
     def remover_item_tabela(self, row):
@@ -262,26 +273,18 @@ class MainPedidos(Ui_ct_main_pedido):
         Janela = Ui_Dialog_pedido()
         Dialog = QtGui.QDialog()
         Janela.setConfPedido(Dialog)
-        Janela.tx_data_entrega.setDate(QtCore.QDate.currentDate())
-        Janela.tx_valor_entrada.setText(str(00.00))
-        Janela.tx_valor_entrada.setFocus()
-        Janela.tx_valor_entrada.selectAll()
+        Janela.tx_data_entrega.setText(QtCore.QDate.toString(self.tx_data_entrega.date(), "dd-MM-yyyy"))
+        Janela.tx_valor_entrada.setText(self.tx_entrada_pedido.text())
         Janela.tx_saldo_devedor.setText(self.tx_total_pedido.text())
-        def calculo_saldo_restante():
-            saldo_restante = float(self.tx_total_pedido.text()) - float(Janela.tx_valor_entrada.text())
-            Janela.tx_saldo_devedor.setText(format(saldo_restante, ".2f"))
 
-
-
-        Janela.tx_valor_entrada.textChanged.connect(calculo_saldo_restante)
         def cadastrar_pedido():
             cadastro = CrudPedidos()
             cadastro.cod_pedido = unicode(self.id_pedido.text()).encode("utf8")
             cadastro.cliente = unicode(self.tx_pedido_cod_cliente.text()).encode("utf8")
-            cadastro.data_entrega = QtCore.QDate.toString(Janela.tx_data_entrega.date(), "yyyy-MM-dd")
-            cadastro.status_pedido = 2
-            cadastro.entrada = unicode(Janela.tx_valor_entrada.text()).encode("utf8")
-            cadastro.saldo_devedor = unicode(Janela.tx_saldo_devedor.text()).encode("utf8")
+            cadastro.data_entrega = QtCore.QDate.toString(self.tx_data_entrega.date(), "yyyy-MM-dd")
+            cadastro.status_pedido = self.combo_status_pedido.currentIndex()
+            cadastro.entrada = unicode(self.tx_entrada_pedido.text()).encode("utf8")
+            cadastro.saldo_devedor = unicode(self.tx_saldo_devedor_pedido.text()).encode("utf8")
             cadastro.valor_total = unicode(self.tx_total_pedido.text()).encode("utf8")
             cadastro.cad_pedido()
 
@@ -299,9 +302,10 @@ class MainPedidos(Ui_ct_main_pedido):
                 cadastro.tema = self.tabela_pedido_add.item(row, 4).text()
                 cadastro.obs = self.tabela_pedido_add.item(row, 5).text()
                 cadastro.cad_pedido_produtos()
+            self.cancelar_cad_pedido()
 
 
-        QtCore.QObject.connect(Janela.buttonBox, QtCore.SIGNAL("accepted()"), cadastrar_pedido)
+        Janela.bt_ok_pedido.clicked.connect(cadastrar_pedido)
         Dialog.exec_()
 
     #Cancelar
@@ -328,10 +332,39 @@ class MainPedidos(Ui_ct_main_pedido):
         Janela = BuscaPedido()
         Janela.buscaProduos(Dialog)
         def resultado(row):
-            print Janela.tableWidget.item(row, 0).text()
+            # Selecionando Cliente
+            self.pedidos.selecionar_pedido(Janela.tableWidget.item(row, 0).text())
+            self.busca_cliente_cod(self.pedidos.cliente)
+            # Limpando Tabela
+            while self.tabela_pedido_add.rowCount() > 0:
+                self.tabela_pedido_add.removeRow(0)
+
+            i = 0
+            while i < len(self.pedidos.produto):
+                self.tabela_pedido_add.insertRow(i)
+                self.tabela_pedido_add.setItem(i, 0, QtGui.QTableWidgetItem(str(self.pedidos.cod_produto[i])))
+                self.tabela_pedido_add.setItem(i, 1, (QtGui.QTableWidgetItem(self.pedidos.produto[i])))
+                self.tabela_pedido_add.setItem(i, 2, (QtGui.QTableWidgetItem(str(self.pedidos.qtde[i]))))
+                self.tabela_pedido_add.setItem(i, 3, (QtGui.QTableWidgetItem(format(self.pedidos.valor_produto[i], ".2f"))))
+                self.tabela_pedido_add.setItem(i, 4, (QtGui.QTableWidgetItem(str(self.pedidos.tema[i]))))
+                self.tabela_pedido_add.setItem(i, 5, (QtGui.QTableWidgetItem(self.pedidos.obs[i])))
+                self.tabela_pedido_add.setItem(i, 6, (QtGui.QTableWidgetItem(format(self.pedidos.total_produto[i], ".2f"))))
+
+                i += 1
+            self.tx_total_pedido.setText(format(self.pedidos.valor_total, ".2f"))
+            self.tx_saldo_devedor_pedido.setText(format(self.pedidos.saldo_devedor, ".2f"))
+            self.tx_entrada_pedido.setText(format(self.pedidos.entrada, ".2f"))
+            self.bt_cadastrar_pedido.setEnabled(True)
+
+
         Janela.tableWidget.cellDoubleClicked.connect(resultado)
 
         Dialog.exec_()
+
+    # saldo Devedor
+    def saldo_devedor(self):
+        saldo = float(self.tx_total_pedido.text()) - float(self.tx_entrada_pedido.text())
+        self.tx_saldo_devedor_pedido.setText(format(saldo, ".2f"))
 
 
 
