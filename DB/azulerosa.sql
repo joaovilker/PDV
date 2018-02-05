@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 23-Jan-2018 às 19:38
+-- Generation Time: 01-Fev-2018 às 13:51
 -- Versão do servidor: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.27-0+deb9u1
 
@@ -5652,12 +5652,13 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nome`, `sobrenome`, `telefone`, `cpf`, `endereco`, `num`, `bairro`, `complemento`, `cep`, `referencia`, `cidade`, `estado`) VALUES
-(1, 'Vendas', 'vendas', '(99) 70691-61', '125.828.467-75', '', '', '', '', '', '', '', ''),
-(2, 'Azul e Rosa', 'Personalizados', '(22) 27331-832', '125.828.467-75', '', '', '', '', '', '', '', 'RJ'),
-(3, 'Andre ', 'Luis', '(22) 27331-832', '125.828.467-75', '', '', '', '', '', '', '', ''),
-(4, 'Jessica Santos', 'Santos', '() -', '125.828.467-75', '', '', '', '', '', '', 'Campos dos Goytacazes', 'RJ'),
-(5, 'teste', 'teste', '() -', '123.456.789-10', '', '', '', '', '', '', '', ''),
-(6, 'Cliente', 'cliente', '', '..--', '', '', '', '', '', '', '', 'PI');
+(1, 'Vendas', 'vendas', '(99) 70691-61', '125.828.467-75', '', '150', '', '', '', '', '', '18'),
+(2, 'Azul e Rosa', 'Personalizados', '(22) 27331-832', '125.828.467-75', '', '', '', '', '', '', '', '18'),
+(3, 'André', 'Luis', '(22) 27331-832', '125.828.467-75', '', '', '', '', '', '', '', '19'),
+(4, 'Jessica Santos', 'Santos', '() -', '125.828.467-75', '', '', '', '', '', '', 'Campos dos Goytacazes', '19'),
+(5, 'teste', 'teste', '() -', '123.456.789-10', '', '', '', '', '', '', '', '18'),
+(6, 'Cliente', 'cliente', '', '..--', '', '', '', '', '', '', '', '19'),
+(7, 'lalal', '2222222', '(22) 22222-2222', '222.222.222-', '222222', '2', '222', '222', '', '', '222', '25');
 
 -- --------------------------------------------------------
 
@@ -5768,10 +5769,25 @@ INSERT INTO `pais` (`id`, `nome`, `sigla`) VALUES
 CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL,
   `cliente` int(11) NOT NULL,
-  `data_aviso` date NOT NULL,
   `data_entrega` date NOT NULL,
-  `status` int(1) NOT NULL
+  `status` int(1) NOT NULL DEFAULT '2',
+  `entrada` double(6,2) NOT NULL,
+  `saldo_devedor` double(6,2) NOT NULL,
+  `valor_total` double(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `cliente`, `data_entrega`, `status`, `entrada`, `saldo_devedor`, `valor_total`) VALUES
+(1, 2, '2000-01-01', 0, 40.00, 50.00, 90.00),
+(2, 2, '2000-01-01', 2, 5.00, 15.00, 20.00),
+(3, 4, '2000-01-01', 2, 0.00, 180.00, 180.00),
+(4, 7, '2000-01-01', 2, 0.00, 845.00, 845.00),
+(5, 2, '2000-01-01', 2, 50.00, 150.00, 200.00),
+(6, 5, '2000-01-14', 2, 0.00, 20.00, 20.00),
+(7, 5, '2018-02-15', 2, 50.00, 90.00, 140.00);
 
 -- --------------------------------------------------------
 
@@ -5799,7 +5815,7 @@ INSERT INTO `produtos` (`id_produto`, `produto`, `quantidade_minima`, `quantidad
 (1, 'Caneca Cerâmica ', 5, 12, 7.97, 25.00, 0, 0, ''),
 (2, 'Almofada 30x30cm', 5, 8, 6.00, 20.00, 0, 0, 'Não Há'),
 (3, 'Almofada 40x30', 5, 8, 7.00, 25.00, 0, 0, ''),
-(4, 'Camisa Gola Careca', 0, 2, 7.00, 25.00, 0, 0, ''),
+(4, 'Camisa Gola Careca', 0, 2, 7.00, 25.00, 0, 0, 'nada'),
 (5, 'Caneca Polimero', 10, 5, 9.00, 25.00, 0, 0, 'Nada Nada'),
 (6, 'Relógio 15x15', 5, 20, 9.00, 25.00, 0, 0, ''),
 (7, 'Mochila 40x300', 5, 8, 6.00, 8.00, 0, 0, '');
@@ -5807,14 +5823,55 @@ INSERT INTO `produtos` (`id_produto`, `produto`, `quantidade_minima`, `quantidad
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `relação_pedido`
+-- Estrutura da tabela `relacao_pedido`
 --
 
-CREATE TABLE `relação_pedido` (
+CREATE TABLE `relacao_pedido` (
   `id_relacao` int(11) NOT NULL,
   `cod_pedido` int(11) NOT NULL,
-  `produto` int(11) NOT NULL
+  `produto` int(11) NOT NULL,
+  `qntde` int(11) NOT NULL,
+  `valor` double(6,2) NOT NULL,
+  `total` double(6,2) NOT NULL,
+  `tema` varchar(40) NOT NULL,
+  `obs` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `relacao_pedido`
+--
+
+INSERT INTO `relacao_pedido` (`id_relacao`, `cod_pedido`, `produto`, `qntde`, `valor`, `total`, `tema`, `obs`) VALUES
+(2, 2, 2, 2, 25.00, 50.00, '1', 'nenhuma'),
+(3, 3, 7, 20, 8.00, 160.00, 'Peppa Pig', ''),
+(4, 3, 2, 1, 20.00, 20.00, 'Batman', ''),
+(5, 4, 7, 80, 8.00, 640.00, 'Batman', ''),
+(6, 4, 5, 1, 25.00, 25.00, 'Peppa Pig', 'nenhuma'),
+(7, 4, 7, 20, 8.00, 160.00, 'Peppa Pig', ''),
+(8, 4, 2, 1, 20.00, 20.00, 'Batman', ''),
+(9, 5, 4, 8, 25.00, 200.00, 'Batman', ''),
+(10, 6, 2, 1, 20.00, 20.00, 'Batman', ''),
+(11, 7, 2, 7, 20.00, 140.00, 'Peppa Pig', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `status_pedido`
+--
+
+CREATE TABLE `status_pedido` (
+  `cod_status_pedido` int(11) NOT NULL,
+  `status_pedido` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `status_pedido`
+--
+
+INSERT INTO `status_pedido` (`cod_status_pedido`, `status_pedido`) VALUES
+(1, 'Concuído'),
+(2, 'Em Produção'),
+(3, 'Atrasado');
 
 -- --------------------------------------------------------
 
@@ -5832,9 +5889,8 @@ CREATE TABLE `status_usuarios` (
 --
 
 INSERT INTO `status_usuarios` (`id_status`, `status`) VALUES
-(1, 'Selecione'),
-(2, 'ATIVO'),
-(3, 'BLOQUEADO');
+(1, 'Ativo'),
+(2, 'Bloqueado');
 
 -- --------------------------------------------------------
 
@@ -5867,7 +5923,7 @@ INSERT INTO `tarefas` (`id_tarefa`, `para`, `data_aviso`, `data_tarefa`, `tarefa
 CREATE TABLE `usuarios` (
   `id_user` int(11) NOT NULL,
   `usuario` varchar(45) NOT NULL,
-  `senha` varchar(80) NOT NULL,
+  `senha` varchar(80) NOT NULL DEFAULT '123456',
   `nome` varchar(45) NOT NULL,
   `sobrenome` varchar(45) NOT NULL,
   `telefone` varchar(45) NOT NULL,
@@ -5879,7 +5935,7 @@ CREATE TABLE `usuarios` (
   `cep` varchar(45) NOT NULL,
   `referencia` varchar(45) NOT NULL,
   `cidade` varchar(45) NOT NULL,
-  `estado` varchar(45) NOT NULL,
+  `estado` int(11) NOT NULL,
   `nivel` int(1) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -5889,7 +5945,14 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_user`, `usuario`, `senha`, `nome`, `sobrenome`, `telefone`, `cpf`, `endereco`, `num`, `bairro`, `complemento`, `cep`, `referencia`, `cidade`, `estado`, `nivel`, `status`) VALUES
-(1, 'admin', 'admin', 'Admin', 'Admin', '22997069161', '12582846775', 'Rua Major Euclides Maciel', '151', 'Turf', 'Fundos', '28015160', 'tadaria Turf Club', 'Campos dos Goytacazes', '19', 3, 1);
+(1, 'admin', 'andre', 'Admin', 'Admin', '(22) 99706-9161', '125.828.467-75', 'Rua Major Euclides Maciel', '151', 'Turf', 'Fundos', '2801-516', 'tadaria Turf Club', 'Campos dos Goytacazes', 17, 2, 0),
+(2, 'andre', '123', 'jessica', 'santos', '(22) 99750-9483', '125.828.467-75', '', '', '', '', '-', '', '', 18, 0, 1),
+(3, 'jejeje', '123456', 'sem nome', 'nenhum', '() -', '..-', '', '', '', '', '-', '', '', 7, 1, 1),
+(4, 'user', '', 'nome', 'sobrenome', '(22) 22222-2222', '222.222.222-22', '222222222222222', '2222', '2222', '222', '2222-222', '22222', '222222', 26, 2, 1),
+(5, 'teste', '123456', 'teste', 'teste', '() -', '..-', '', '', '', '', '-', '', '', 19, 1, 1),
+(6, 'andre', '123456', '', '', '() -', '..-', '', '', '', '', '-', '', '', 17, 2, 0),
+(7, 'andre', '123456', 'andre', '', '() -', '..-', '', '', '', '', '-', '', '', 18, 0, 0),
+(8, 'luis', 'andre', 'luis', '', '() -', '..-', '', '', '', '', '-', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5967,10 +6030,16 @@ ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id_produto`);
 
 --
--- Indexes for table `relação_pedido`
+-- Indexes for table `relacao_pedido`
 --
-ALTER TABLE `relação_pedido`
+ALTER TABLE `relacao_pedido`
   ADD PRIMARY KEY (`id_relacao`);
+
+--
+-- Indexes for table `status_pedido`
+--
+ALTER TABLE `status_pedido`
+  ADD PRIMARY KEY (`cod_status_pedido`);
 
 --
 -- Indexes for table `status_usuarios`
@@ -6016,7 +6085,7 @@ ALTER TABLE `cidade`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `estado`
 --
@@ -6041,22 +6110,27 @@ ALTER TABLE `pais`
 -- AUTO_INCREMENT for table `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `relação_pedido`
+-- AUTO_INCREMENT for table `relacao_pedido`
 --
-ALTER TABLE `relação_pedido`
-  MODIFY `id_relacao` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `relacao_pedido`
+  MODIFY `id_relacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `status_pedido`
+--
+ALTER TABLE `status_pedido`
+  MODIFY `cod_status_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `status_usuarios`
 --
 ALTER TABLE `status_usuarios`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --
@@ -6066,7 +6140,7 @@ ALTER TABLE `tarefas`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `vendas`
 --
